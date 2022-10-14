@@ -1,0 +1,30 @@
+in internet, there are sprites from ladybug
+but, when character or enemies move, no animation in ladybug.
+so, let me think..
+
+how about make sprites and animation..?
+
+// coundn't add lots animation..
+
+my first plan was spining image that printed.
+if it can, it seems to moving with animation.
+but, idk pico2d has that capacity.
+
+// that solution can't add lots animtion to character too..
+
+um.. then.. 
+
+しょうがないじゃん。。作るか。。
+先ずは。。どんな形で作るか。。
+アイテムから。。
+
+キャラクターは　どうするかしら。。
+
+캐릭터 - 드론 ( 100 x 100 )
+
+꽃잎 폭탄 - 전기 폭탄
+나뭇잎 유도탄 - 유도 칼날
+꽃잎 보호막 -전기 보호막
+벌 미사일 - 거대 드론
+베이비 버그 - 미니 드론 (베이비 드론)
+콩벌레 - 일렉트릭 볼
