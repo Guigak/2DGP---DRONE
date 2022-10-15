@@ -28,3 +28,88 @@ um.. then..
 벌 미사일 - 거대 드론
 베이비 버그 - 미니 드론 (베이비 드론)
 콩벌레 - 일렉트릭 볼
+
+// character (DRONE)
+
+int position_x (x 좌표)
+int position_y (y 좌표)
+
+int radius (반지름 for 충돌체크)
+
+boolean shield (실드 유무)
+int shield_time (실드 적용 시간)
+
+boolean alive (죽음 체크용)
+
+// enemy
+
+int position_x
+int position_y
+
+int move_x
+int move_y
+
+int radius
+
+int rad (회전 각도)
+
+boolean alive
+
+// electric_boom
+
+int position_x
+int position_y
+
+int radius
+
+int time
+
+// shuriken_drone
+
+int position_x
+int position_y
+
+int radius
+
+int target (유도할 적의 인덱스)
+
+boolean explose (폭발 상태)
+
+int time
+
+// electric_shield
+
+in character..
+
+// big_drone
+
+int position_x
+int position_y
+
+RECT rect (for 충돌체크)
+
+int speed
+
+// mini_drone
+
+int position_x
+int position_y
+
+int move_x
+int move_y
+
+int radius
+
+int rad
+
+// electric_ball
+
+int position_x
+int position_y
+
+int move_x
+int move_y
+
+int radius
+
+int time
