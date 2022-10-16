@@ -20,7 +20,7 @@ class Map:
         # else :
         #     self.move_y = 0
 
-class Boy:
+class Drone:
     def __init__(self):
         pass
 
@@ -29,11 +29,6 @@ class Boy:
 
     def draw(self):
         pass
-
-
-
-
-
 
 def handle_events():
     global running
@@ -49,19 +44,22 @@ def handle_events():
 # 게임 초기화 : 객체들을 생성
 
 map = None
+drone = None
 running = True
 
 def enter() :
-    global map, running
+    global map, drone, running
 
     map = Map()
+    drone = Drone()
     running = True
 
 # 게임 종료 - 객체를 소멸
 def exit() :
-    global map
+    global map, drone
 
     del map
+    del drone
 
 def update() :
     pass    
@@ -91,23 +89,4 @@ def test_self() :
 
 if __name__ == '__main__' :
     test_self()
-
-# open_canvas()
-# enter()
-
-# # game main loop code
-# while running:
-#     handle_events()
-
-#     # 게임 월드 객체를 업데이트 - 게임 로직
-#     update()
-
-#     # 게임 월드 렌더링
-#     draw()
-
-#     delay(0.05)
     
-# exit()
-
-# # finalization code
-# close_canvas()
