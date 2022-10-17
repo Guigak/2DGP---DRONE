@@ -113,7 +113,10 @@ class Enemy :
         self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
 
     def draw(self):
-        pass
+        self.image.clip_composite_draw(self.radius * 2 * self.frame_x, self.frame_y,\
+                                        self.radius * 2, self.radius * 2,\
+                                        self.rad, 0,\
+                                        self.position_x, self.position_y)
 
     def Cal_rad(self) :
         dx = drone.position_x - self.default_x
