@@ -101,7 +101,8 @@ class Enemy :
         self.speed = random.randint(3, 5)
         self.time = 0
 
-        self.rad = 0.0
+        self.rad = 0
+        self.reverse = False
 
         self.alive = True
 
@@ -109,18 +110,30 @@ class Enemy :
         self.frame_y = 0
 
     def update(self):
-        self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
-        self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
+        if self.reverse :
+            self.position_x = self.default_x - self.speed * self.time * math.cos(self.rad)
+            self.position_y = self.default_y - self.speed * self.time * math.sin(self.rad)
+        else :
+            self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
+            self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
+
+        self.time += 1
 
     def draw(self):
         self.image.clip_composite_draw(self.radius * 2 * self.frame_x, self.frame_y,\
                                         self.radius * 2, self.radius * 2,\
-                                        self.rad, 0,\
-                                        self.position_x, self.position_y)
+                                        self.rad, 'n',\
+                                        self.position_x, self.position_y,\
+                                        self.radius * 2, self.radius * 2)
+
+        self.frame_x = (self.frame_x + 1) % 2
 
     def Cal_rad(self) :
         dx = drone.position_x - self.default_x
         dy = drone.position_y - self.default_y
+
+        if dx < 0 :
+            self.reverse = True
 
         self.rad = math.atan(dy / dx)
 
@@ -158,7 +171,7 @@ def handle_events():
 
 map = None
 drone = None
-enemy = None
+enemy = [None]
 running = True
 
 def enter() :
@@ -166,7 +179,9 @@ def enter() :
 
     map = Map()
     drone = Drone()
-    enemy = Enemy()
+    enemy = [Enemy() for i in range(10)]
+    for enem in enemy :
+        enem.Cal_rad()
     running = True
 
 # 게임 종료 - 객체를 소멸
@@ -179,7 +194,8 @@ def exit() :
 
 def update() :
     drone.update()
-    enemy.update()
+    for enem in enemy :
+        enem.update()
     pass    
 
 def draw_world() :
@@ -189,7 +205,8 @@ def draw() :
     clear_canvas()
     map.draw()
     drone.draw()
-    enemy.draw()
+    for enem in enemy :
+        enem.draw()
     update_canvas()
 
     delay(0.1)
