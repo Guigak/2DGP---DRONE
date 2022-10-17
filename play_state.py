@@ -148,6 +148,7 @@ class Enemy :
         tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
 
         if tum < self.radius + drone.radius :
+
             if drone.shield :
                 self.alive = False
             else :
@@ -157,6 +158,8 @@ class Enemy :
 # function
 
 def Chk_Drone_N_Enemy() :
+    for enemy in enemies :
+        enemy.Chk_with_Drone()
     pass
 
 def handle_events():
@@ -218,6 +221,8 @@ def update() :
     drone.update()
     for enemy in enemies :
         enemy.update()
+
+    Chk_Drone_N_Enemy()
     pass    
 
 def draw_world() :
