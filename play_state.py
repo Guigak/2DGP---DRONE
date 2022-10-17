@@ -43,7 +43,6 @@ class Drone:
         self.frame_y = 0
 
     def update(self):
-
         pass
 
     def draw(self):
@@ -51,13 +50,32 @@ class Drone:
 
 def handle_events():
     global running
+
     events = get_events()
+
     for event in events:
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN :
             if event.key == SDLK_ESCAPE:
                 game_framework.quit()
+            if event.key == SDLK_UP :
+                drone.up = True
+            if event.key == SDLK_DOWN :
+                drone.down = True
+            if event.key == SDLK_LEFT :
+                drone.left = True
+            if event.key == SDLK_RIGHT :
+                drone.right = True
+        elif event.type == SDL_KEYUP :
+            if event.key == SDLK_UP :
+                drone.up = False
+            if event.key == SDLK_DOWN :
+                drone.down = False
+            if event.key == SDLK_LEFT :
+                drone.left = False
+            if event.key == SDLK_RIGHT :
+                drone.right = False
 
 
 # 게임 초기화 : 객체들을 생성
