@@ -141,6 +141,9 @@ class Enemy :
 
         self.rad = math.atan(dy / dx)
 
+    def Chk_with_Drone() :
+        pass
+
 # function
 
 def Chk_Drone_N_Enemy() :
