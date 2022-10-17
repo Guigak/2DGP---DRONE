@@ -180,31 +180,31 @@ def handle_events():
 
 map = None
 drone = None
-enemy = [None]
+enemies = [None]
 running = True
 
 def enter() :
-    global map, drone, enemy, running
+    global map, drone, enemies, running
 
     map = Map()
     drone = Drone()
-    enemy = [Enemy() for i in range(10)]
-    for enem in enemy :
-        enem.Cal_rad()
+    enemies = [Enemy() for i in range(10)]
+    for enemy in enemies :
+        enemy.Cal_rad()
     running = True
 
 # 게임 종료 - 객체를 소멸
 def exit() :
-    global map, drone, enemy
+    global map, drone, enemies
 
     del map
     del drone
-    del enemy
+    del enemies
 
 def update() :
     drone.update()
-    for enem in enemy :
-        enem.update()
+    for enemy in enemies :
+        enemy.update()
     pass    
 
 def draw_world() :
@@ -214,8 +214,8 @@ def draw() :
     clear_canvas()
     map.draw()
     drone.draw()
-    for enem in enemy :
-        enem.draw()
+    for enemy in enemies :
+        enemy.draw()
     update_canvas()
 
     delay(0.1)
