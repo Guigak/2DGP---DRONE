@@ -121,6 +121,7 @@ def exit() :
     del drone
 
 def update() :
+    drone.update()
     pass    
 
 def draw_world() :
@@ -129,7 +130,6 @@ def draw_world() :
 def draw() :
     clear_canvas()
     map.draw()
-    drone.update()
     drone.draw()
     update_canvas()
 
