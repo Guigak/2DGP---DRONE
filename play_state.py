@@ -2,7 +2,11 @@ from pico2d import *
 import random
 import game_framework
 
+# useful variable (maybe?)
+
 WIDTH, HEIGHT = 700, 900
+
+# class
 
 class Map :
     def __init__(self):
@@ -136,6 +140,11 @@ class Enemy :
             self.reverse = True
 
         self.rad = math.atan(dy / dx)
+
+# function
+
+def Chk_Drone_N_Enemy() :
+    pass
 
 def handle_events():
     global running
