@@ -3,7 +3,7 @@ import game_framework
 
 WIDTH, HEIGHT = 700, 900
 
-class Map:
+class Map :
     def __init__(self):
         self.image = load_image('map.png')
         self.speed = 10
@@ -15,14 +15,7 @@ class Map:
 
         self.move_y = (self.move_y + self.speed) % HEIGHT
 
-        print(self.move_y)
-
-        # if self.move_y + self.speed < 900 :
-        #     self.move_y += self.speed
-        # else :
-        #     self.move_y = 0
-
-class Drone:
+class Drone :
     def __init__(self):
         self.image = load_image('drone.png')
         self.radius = 50
@@ -95,6 +88,16 @@ class Drone:
                             self.position_x, self.position_y)
 
         self.frame_x = (self.frame_x + 1) % 2
+        pass
+
+class Enemy :
+    def __init__(self):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
         pass
 
 def handle_events():
