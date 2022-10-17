@@ -29,6 +29,8 @@ class Drone:
         self.position_x = WIDTH // 2
         self.position_y = self.radius
 
+        self.speed = 10
+
         self.up = False
         self.down = False
         self.left = False
