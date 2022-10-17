@@ -106,7 +106,8 @@ class Enemy :
         self.alive = True
 
     def update(self):
-        pass
+        self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
+        self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
 
     def draw(self):
         pass
