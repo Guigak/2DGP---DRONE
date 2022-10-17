@@ -45,22 +45,43 @@ class Drone:
         self.frame_y = 0
 
     def update(self):
+        # about moving
+    
         if self.up :
             print('press key up')
             if self.position_y < HEIGHT - self.radius :
                 self.position_y += self.speed
 
+            self.frame_y = 0
+
         if self.down :
             if self.position_y > self.radius :
                 self.position_y -= self.speed
+                
+            self.frame_y = 0
                 
         if self.left :
             if self.position_x > self.radius :
                 self.position_x -= self.speed
                 
+            self.frame_y = 1
+                
         if self.right :
             if self.position_x < WIDTH - self.radius :
                 self.position_x += self.speed
+                
+            self.frame_y = 1
+
+        # about drawing
+
+        if (self.up and self.left)\
+            or (self.down and self.right) :
+            self.frame_y = 2
+
+        if (self.up and self.right)\
+            or (self.down and self.left) :
+            self.frame_y = 3
+
 
     def draw(self):
         self.image.clip_draw(self.radius * 2 * self.frame_x, self.radius * 2 * (3 - self.frame_y),\
