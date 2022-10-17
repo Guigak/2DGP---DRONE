@@ -62,6 +62,11 @@ class Drone:
                 self.position_x + self.speed
 
     def draw(self):
+        self.image.clip_draw(self.radius * 2 * self.frame_x, self.radius * 2 * (3 - self.frame_y),\
+                            self.radius * 2, self.radius * 2,\
+                            self.position_x, self.position_y)
+
+        self.frame_x = (self.frame_x + 1) % 2
         pass
 
 def handle_events():
@@ -123,6 +128,8 @@ def draw_world() :
 def draw() :
     clear_canvas()
     map.draw()
+    drone.update()
+    drone.draw()
     update_canvas()
 
     delay(0.1)
