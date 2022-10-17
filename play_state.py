@@ -141,7 +141,17 @@ class Enemy :
 
         self.rad = math.atan(dy / dx)
 
-    def Chk_with_Drone() :
+    def Chk_with_Drone(self) :
+        tum_x = drone.position_x - self.position_x
+        tum_y = drone.position_y - self.position_y
+
+        tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
+
+        if tum < self.radius + drone.radius :
+            if drone.shield :
+                self.alive = False
+            else :
+                drone.alive = False
         pass
 
 # function
