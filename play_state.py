@@ -45,7 +45,21 @@ class Drone:
         self.frame_y = 0
 
     def update(self):
-        pass
+        if self.up :
+            if self.position_y < HEIGHT - self.radius :
+                self.position_y + self.speed
+
+        if self.down :
+            if self.position_y > self.radius :
+                self.position_y - self.speed
+                
+        if self.left :
+            if self.position_x > self.radius :
+                self.position_x - self.speed
+                
+        if self.right :
+            if self.position_x < WIDTH - self.radius :
+                self.position_x + self.speed
 
     def draw(self):
         pass
