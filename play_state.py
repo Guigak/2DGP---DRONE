@@ -105,6 +105,9 @@ class Enemy :
 
         self.alive = True
 
+        self.frame_x = 0
+        self.frame_y = 0
+
     def update(self):
         self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
         self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
