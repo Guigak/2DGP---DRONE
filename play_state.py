@@ -1,4 +1,5 @@
 from pico2d import *
+import random
 import game_framework
 
 WIDTH, HEIGHT = 700, 900
@@ -92,7 +93,17 @@ class Drone :
 
 class Enemy :
     def __init__(self):
-        pass
+        self.image = load_image('enemy.png')
+        self.radius = 50
+        self.default_x = self.position_x = random.randint(0, WIDTH)
+        self.default_y = self.position_y = HEIGHT + self.radius
+
+        self.speed = random.randint(3, 5)
+        self.time = 0
+
+        self.rad = 0.0
+
+        self.alive = True
 
     def update(self):
         pass
