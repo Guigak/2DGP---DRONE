@@ -200,16 +200,20 @@ def handle_events():
 map = None
 drone = None
 enemies = [None]
+
+time_create_enemy = None
 running = True
 
 def enter() :
-    global map, drone, enemies, running
+    global map, drone, enemies, time_create_enemy, running
 
     map = Map()
     drone = Drone()
     enemies += [Enemy()]
     for enemy in enemies :
         enemy.Cal_rad()
+
+    time_create_enemy = 0
     running = True
 
 # 게임 종료 - 객체를 소멸
