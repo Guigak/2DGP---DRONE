@@ -111,6 +111,12 @@ class Enemy :
     def draw(self):
         pass
 
+    def Cal_rad(self) :
+        dx = drone.position_x - self.default_x
+        dy = drone.position_y - self.default_y
+
+        self.rad = math.atan(dy / dx)
+
 def handle_events():
     global running
 
