@@ -1,6 +1,8 @@
 from pico2d import *
 import game_framework
 
+WIDTH, HEIGHT = 700, 900
+
 class Map:
     def __init__(self):
         self.image = load_image('map.png')
@@ -8,10 +10,10 @@ class Map:
         self.move_y = 0
 
     def draw(self):
-        self.image.draw(350, 450 - self.move_y)
-        self.image.draw(350, 450 + 900 - self.move_y)
+        self.image.draw(WIDTH // 2, HEIGHT // 2 - self.move_y)
+        self.image.draw(WIDTH // 2, HEIGHT // 2 + HEIGHT - self.move_y)
 
-        self.move_y = (self.move_y + self.speed) % 900
+        self.move_y = (self.move_y + self.speed) % HEIGHT
 
         print(self.move_y)
 
@@ -22,9 +24,26 @@ class Map:
 
 class Drone:
     def __init__(self):
-        pass
+        self.image = load_image('drone.png')
+        self.radius = 50
+        self.position_x = WIDTH // 2
+        self.position_y = self.radius
+
+        self.up = False
+        self.down = False
+        self.left = False
+        self.right = False
+        
+        self.shield = False
+        self.shield_time = 0
+
+        self.alive = True
+
+        self.frame_x = 0
+        self.frame_y = 0
 
     def update(self):
+
         pass
 
     def draw(self):
@@ -38,7 +57,7 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN :
             if event.key == SDLK_ESCAPE:
-                pass
+                game_framework.quit()
 
 
 # 게임 초기화 : 객체들을 생성
