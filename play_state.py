@@ -157,6 +157,9 @@ class Enemy :
 
 # function
 
+def Add_Enemy() :
+    pass
+
 def Chk_Drone_N_Enemy() :
     for enemy in enemies :
         enemy.Chk_with_Drone()
@@ -204,7 +207,7 @@ def enter() :
 
     map = Map()
     drone = Drone()
-    enemies = [Enemy() for i in range(10)]
+    enemies += [Enemy()]
     for enemy in enemies :
         enemy.Cal_rad()
     running = True
