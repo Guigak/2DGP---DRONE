@@ -123,6 +123,20 @@ class Enemy :
 
         self.time += 1
 
+        if (self.position_x < -self.radius) or (self.position_x > WIDTH + self.radius) :
+            self.alive = False
+
+        if self.position_y < -self.radius :
+            self.alive = False
+
+        if not self.alive :
+            self.default_x = random.randint(0, WIDTH)
+            self.reverse = False
+            self.Cal_rad()
+            self.time = 0
+
+            self.alive = True
+
     def draw(self):
         self.image.clip_composite_draw(self.radius * 2 * self.frame_x, self.frame_y,\
                                         self.radius * 2, self.radius * 2,\
@@ -139,7 +153,10 @@ class Enemy :
         if dx < 0 :
             self.reverse = True
 
-        self.rad = math.atan(dy / dx)
+        if dx == 0 :
+            self.rad = math.atan(dy / 1)
+        else :
+            self.rad = math.atan(dy / dx)
 
     def Chk_with_Drone(self) :
         tum_x = drone.position_x - self.position_x
@@ -148,7 +165,6 @@ class Enemy :
         tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
 
         if tum < self.radius + drone.radius :
-
             if drone.shield :
                 self.alive = False
             else :
@@ -256,7 +272,7 @@ def draw() :
         enemy.draw()
     update_canvas()
 
-    delay(0.1)
+    delay(0.02)
 
 def pause():
     pass
