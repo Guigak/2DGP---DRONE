@@ -192,6 +192,9 @@ def Chk_Drone_N_Enemy() :
         enemy.Chk_with_Drone()
     pass
 
+def Chk_Game_End() :
+    pass
+
 def handle_events():
     global running
 
