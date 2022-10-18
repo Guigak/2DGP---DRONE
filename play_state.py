@@ -158,6 +158,17 @@ class Enemy :
 # function
 
 def Add_Enemy() :
+    global enemies, time_create_enemy
+
+    if len(enemies) < 50 :
+        if time_create_enemy == len(enemies) :
+            enemies += [Enemy()]
+            enemies[len(enemies) - 1].Cal_rad()
+
+            time_create_enemy = 0
+        else :
+            time_create_enemy += 1
+
     pass
 
 def Chk_Drone_N_Enemy() :
@@ -197,6 +208,8 @@ def handle_events():
 
 # 게임 초기화 : 객체들을 생성
 
+# data
+
 map = None
 drone = None
 enemies = [None]
@@ -209,9 +222,8 @@ def enter() :
 
     map = Map()
     drone = Drone()
-    enemies += [Enemy()]
-    for enemy in enemies :
-        enemy.Cal_rad()
+    enemies = [Enemy()]
+    enemies[0].Cal_rad()
 
     time_create_enemy = 0
     running = True
@@ -229,6 +241,7 @@ def update() :
     for enemy in enemies :
         enemy.update()
 
+    Add_Enemy()
     Chk_Drone_N_Enemy()
     pass    
 
