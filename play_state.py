@@ -193,6 +193,8 @@ def Chk_Drone_N_Enemy() :
     pass
 
 def Chk_Game_End() :
+    if not drone.alive :
+        game_framework.quit()   # 임시
     pass
 
 def handle_events():
@@ -262,6 +264,7 @@ def update() :
 
     Add_Enemy()
     Chk_Drone_N_Enemy()
+    Chk_Game_End()
     pass    
 
 def draw_world() :
