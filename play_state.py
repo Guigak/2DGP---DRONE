@@ -171,6 +171,16 @@ class Enemy :
                 drone.alive = False
         pass
 
+class Item:
+    def __init__(self):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
+        pass
+
 # function
 
 def Add_Enemy() :
@@ -278,7 +288,7 @@ def draw() :
         enemy.draw()
     update_canvas()
 
-    delay(0.02)
+    delay(0.05)
 
 def pause():
     pass
