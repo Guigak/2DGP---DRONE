@@ -213,16 +213,10 @@ class Item:
             self.default_x = self.radius
             self.default_y = self.position_y
 
-            if self.direct == 0 :
-                self.rad -= math.pi / 4
-
-                # if self.rad < -math.pi :
-                #     self.rad += 2 * math.pi
+            if self.rad < 0 :
+                self.rad = self.rad - 2 * (math.pi / 2 + self.rad)
             else :
-                self.rad += math.pi / 4
-
-                # if self.rad > math.pi :
-                #     self.rad -= 2 * math.pi
+                self.rad = self.rad + 2 * (math.pi / 2 - self.rad)
 
             self.time = 0
             self.bounce = True
@@ -231,16 +225,10 @@ class Item:
             self.default_x = WIDTH - self.radius
             self.default_y = self.position_y
 
-            if self.direct == 0 :
-                self.rad -= math.pi / 4
-
-                # if self.rad < -math.pi :
-                #     self.rad += 2 * math.pi
+            if self.rad < 0 :
+                self.rad = self.rad - 2 * (math.pi / 2 + self.rad)
             else :
-                self.rad += math.pi / 4
-
-                # if self.rad > math.pi :
-                #     self.rad -= 2 * math.pi
+                self.rad = self.rad + 2 * (math.pi / 2 - self.rad)
 
             self.time = 0
             self.bounce = True
@@ -249,16 +237,7 @@ class Item:
             self.default_y = self.radius
             self.default_x = self.position_x
 
-            if self.direct == 0 :
-                self.rad -= math.pi / 4
-
-                if self.rad < -math.pi :
-                    self.rad += 2 * math.pi
-            else :
-                self.rad += math.pi / 4
-
-                if self.rad > math.pi :
-                    self.rad -= 2 * math.pi
+            self.rad = -self.rad
 
             self.time = 0
             self.bounce = True
@@ -268,16 +247,7 @@ class Item:
                 self.default_y = HEIGHT - self.radius
                 self.default_x = self.position_x
 
-                if self.direct == 0 :
-                    self.rad -= math.pi / 4
-
-                    if self.rad < -math.pi :
-                        self.rad += 2 * math.pi
-                else :
-                    self.rad += math.pi / 4
-
-                    if self.rad > math.pi :
-                        self.rad -= 2 * math.pi
+                self.rad = -self.rad
 
                 self.time = 0
                 self.bounce = True
