@@ -186,9 +186,13 @@ class Item:
         self.direct = self.rand_num % 2 # 0 : left, 1 : right
 
         if self.direct == 0 :
-            self.rad = random.uniform(15 * math.pi / 180, 60 * math.pi / 180)
+            self.rad = -45 * math.pi / 180
+            #self.rad = random.uniform(15 * math.pi / 180, 60 * math.pi / 180)
         else :
-            self.rad = random.uniform(105 * math.pi / 180, 165 * math.pi / 180)
+            self.rad = -45 * math.pi / 180
+            #self.rad = random.uniform(105 * math.pi / 180, 165 * math.pi / 180)
+
+        self.bounce = False
 
         self.alive = True
 
@@ -205,24 +209,45 @@ class Item:
         self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
         self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
 
-        # if self.position_x <= self.radius\
-        #     or self.position_x >= WIDTH - self.radius :
-        #     self.default_x = self.position_x
-
-        #     if self.direct == 0 :
-        #         self.rad -= math.pi / 4
-
-        #         if self.rad < -math.pi :
-        #             self.rad += 2 * math.pi
-        #     else :
-        #         self.rad += math.pi / 4
-
-        #         if self.rad > math.pi :
-        #             self.rad -= 2 * math.pi
-                
-        if self.position_y <= self.radius\
-            or self.position_y >= HEIGHT - self.radius :
+        if self.position_x <= self.radius :
+            self.default_x = self.radius
             self.default_y = self.position_y
+
+            if self.direct == 0 :
+                self.rad -= math.pi / 4
+
+                # if self.rad < -math.pi :
+                #     self.rad += 2 * math.pi
+            else :
+                self.rad += math.pi / 4
+
+                # if self.rad > math.pi :
+                #     self.rad -= 2 * math.pi
+
+            self.time = 0
+            self.bounce = True
+                
+        if self.position_x >= WIDTH - self.radius :
+            self.default_x = WIDTH - self.radius
+            self.default_y = self.position_y
+
+            if self.direct == 0 :
+                self.rad -= math.pi / 4
+
+                # if self.rad < -math.pi :
+                #     self.rad += 2 * math.pi
+            else :
+                self.rad += math.pi / 4
+
+                # if self.rad > math.pi :
+                #     self.rad -= 2 * math.pi
+
+            self.time = 0
+            self.bounce = True
+                
+        if self.position_y <= self.radius :
+            self.default_y = self.radius
+            self.default_x = self.position_x
 
             if self.direct == 0 :
                 self.rad -= math.pi / 4
@@ -234,6 +259,28 @@ class Item:
 
                 if self.rad > math.pi :
                     self.rad -= 2 * math.pi
+
+            self.time = 0
+            self.bounce = True
+                    
+        if self.bounce :
+            if self.position_y >= HEIGHT - self.radius :
+                self.default_y = HEIGHT - self.radius
+                self.default_x = self.position_x
+
+                if self.direct == 0 :
+                    self.rad -= math.pi / 4
+
+                    if self.rad < -math.pi :
+                        self.rad += 2 * math.pi
+                else :
+                    self.rad += math.pi / 4
+
+                    if self.rad > math.pi :
+                        self.rad -= 2 * math.pi
+
+                self.time = 0
+                self.bounce = True
 
         pass
 
@@ -266,7 +313,8 @@ def Chk_Drone_N_Enemy() :
 
 def Chk_Game_End() :
     if not drone.alive :
-        game_framework.quit()   # 임시
+        #game_framework.quit()   # 임시
+        pass
     pass
 
 def handle_events():
@@ -306,16 +354,18 @@ def handle_events():
 map = None
 drone = None
 enemies = [None]
+items = [None]
 
 time_create_enemy = None
 running = True
 
 def enter() :
-    global map, drone, enemies, time_create_enemy, running
+    global map, drone, enemies, time_create_enemy, items, running
 
     map = Map()
     drone = Drone()
     enemies = [Enemy()]
+    items = [Item()]
     enemies[0].Cal_rad()
 
     time_create_enemy = 0
@@ -323,16 +373,20 @@ def enter() :
 
 # 게임 종료 - 객체를 소멸
 def exit() :
-    global map, drone, enemies
+    global map, drone, enemies, items
 
     del map
     del drone
     del enemies
+    del items
 
 def update() :
     drone.update()
     for enemy in enemies :
         enemy.update()
+
+    for item in items :
+        item.update()
 
     Add_Enemy()
     Chk_Drone_N_Enemy()
@@ -346,8 +400,13 @@ def draw() :
     clear_canvas()
     map.draw()
     drone.draw()
+
     for enemy in enemies :
         enemy.draw()
+
+    for item in items :
+        item.draw()
+
     update_canvas()
 
     delay(0.05)
