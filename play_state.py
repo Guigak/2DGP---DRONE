@@ -204,6 +204,9 @@ class Item:
         pass
 
     def draw(self):
+        self.image.clip_draw(self.radius * 2 * self.frame_x, self.frame_y,\
+                            self.radius * 2, self.radius * 2,\
+                            self.position_x, self.position_y)
         pass
 
 # function
