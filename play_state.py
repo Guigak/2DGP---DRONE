@@ -201,6 +201,40 @@ class Item:
         pass
 
     def update(self):
+        self.time += 1
+        self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
+        self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
+
+        # if self.position_x <= self.radius\
+        #     or self.position_x >= WIDTH - self.radius :
+        #     self.default_x = self.position_x
+
+        #     if self.direct == 0 :
+        #         self.rad -= math.pi / 4
+
+        #         if self.rad < -math.pi :
+        #             self.rad += 2 * math.pi
+        #     else :
+        #         self.rad += math.pi / 4
+
+        #         if self.rad > math.pi :
+        #             self.rad -= 2 * math.pi
+                
+        if self.position_y <= self.radius\
+            or self.position_y >= HEIGHT - self.radius :
+            self.default_y = self.position_y
+
+            if self.direct == 0 :
+                self.rad -= math.pi / 4
+
+                if self.rad < -math.pi :
+                    self.rad += 2 * math.pi
+            else :
+                self.rad += math.pi / 4
+
+                if self.rad > math.pi :
+                    self.rad -= 2 * math.pi
+
         pass
 
     def draw(self):
