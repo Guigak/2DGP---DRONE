@@ -173,6 +173,31 @@ class Enemy :
 
 class Item:
     def __init__(self):
+        self.image = load_image('item_icons.png')
+        self.radius = 25
+        self.default_x = self.position_x = random.randint(0, WIDTH)
+        self.default_y = self.position_y = HEIGHT + self.radius
+
+        self.rand_num = random.randint(0, 24)
+
+        self.speed = 5 + self.rand_num % 3
+        self.time = 0
+
+        self.direct = self.rand_num % 2 # 0 : left, 1 : right
+
+        if self.direct == 0 :
+            self.rad = random.uniform(15 * math.pi / 180, 60 * math.pi / 180)
+        else :
+            self.rad = random.uniform(105 * math.pi / 180, 165 * math.pi / 180)
+
+        self.alive = True
+
+        self.item_num = self.rand_num % 6
+        # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
+
+        self.frame_x = self.item_num
+        self.frame_y = 0
+
         pass
 
     def update(self):
