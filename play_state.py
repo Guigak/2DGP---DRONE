@@ -186,11 +186,9 @@ class Item:
         self.direct = self.rand_num % 2 # 0 : left, 1 : right
 
         if self.direct == 0 :
-            self.rad = -45 * math.pi / 180
-            #self.rad = random.uniform(15 * math.pi / 180, 60 * math.pi / 180)
+            self.rad = -1 * random.uniform(15 * math.pi / 180, 60 * math.pi / 180)
         else :
-            self.rad = -45 * math.pi / 180
-            #self.rad = random.uniform(105 * math.pi / 180, 165 * math.pi / 180)
+            self.rad = -1 * random.uniform(105 * math.pi / 180, 165 * math.pi / 180)
 
         self.bounce = False
 
@@ -277,6 +275,15 @@ def Add_Enemy() :
     pass
 
 def Add_Item() :
+    global items, time_create_item
+
+    if len(items) < 3 :
+        if time_create_item == 0 :
+            items += [Item()]
+
+            time_create_item = 100
+        else :
+            time_create_item -= 1
     pass
 
 def Chk_Drone_N_Enemy() :
@@ -334,7 +341,7 @@ time_create_item = None
 running = True
 
 def enter() :
-    global map, drone, enemies, time_create_enemy, items, running
+    global map, drone, enemies, time_create_enemy, items, time_create_item, running
 
     map = Map()
     drone = Drone()
@@ -343,7 +350,7 @@ def enter() :
     enemies[0].Cal_rad()
 
     time_create_enemy = 0
-    time_create_item = 0
+    time_create_item = 100
     running = True
 
 # 게임 종료 - 객체를 소멸
@@ -364,6 +371,7 @@ def update() :
         item.update()
 
     Add_Enemy()
+    Add_Item()
     Chk_Drone_N_Enemy()
     Chk_Game_End()
     pass    
