@@ -276,6 +276,9 @@ def Add_Enemy() :
 
     pass
 
+def Add_Item() :
+    pass
+
 def Chk_Drone_N_Enemy() :
     for enemy in enemies :
         enemy.Chk_with_Drone()
@@ -327,6 +330,7 @@ enemies = [None]
 items = [None]
 
 time_create_enemy = None
+time_create_item = None
 running = True
 
 def enter() :
@@ -339,6 +343,7 @@ def enter() :
     enemies[0].Cal_rad()
 
     time_create_enemy = 0
+    time_create_item = 0
     running = True
 
 # 게임 종료 - 객체를 소멸
