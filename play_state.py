@@ -289,6 +289,9 @@ class Electric_Boom:
         pass
 
     def draw(self):
+        self.image.clip_draw(self.radius * 2 * self.frame_x, self.radius * 2 * (4 - self.frame_y),\
+                            self.radius * 2, self.radius * 2,\
+                            self.position_x, self.position_y)
         pass
 
 # function
