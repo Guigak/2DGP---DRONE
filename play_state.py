@@ -270,7 +270,7 @@ class Item:
         if self.alive == False :
             match self.item_num :
                 case 0 :
-                    Add_Eball()
+                    Add_Eball(self.position_x, self.position_y)
                 case _:
                     pass
         
