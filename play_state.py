@@ -286,6 +286,15 @@ class Electric_Boom:
         pass
 
     def update(self):
+        self.time += 1
+
+        self.frame_x = self.time // 5
+        self.frame_y = self.time % 5
+
+        if self.time == 25 :
+            self.alive = False
+
+        return self.alive
         pass
 
     def draw(self):
