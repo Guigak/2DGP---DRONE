@@ -388,18 +388,21 @@ map = None
 drone = None
 enemies = [None]
 items = [None]
+electric_booms = [None]
 
 time_create_enemy = None
 time_create_item = None
 running = True
 
 def enter() :
-    global map, drone, enemies, time_create_enemy, items, time_create_item, running
+    global map, drone, enemies, time_create_enemy, items, time_create_item, electric_booms, running
 
     map = Map()
     drone = Drone()
     enemies = [Enemy()]
     items = [Item()]
+    electric_booms = [None]
+
     enemies[0].Cal_rad()
 
     time_create_enemy = 0
@@ -408,12 +411,13 @@ def enter() :
 
 # 게임 종료 - 객체를 소멸
 def exit() :
-    global map, drone, enemies, items
+    global map, drone, enemies, items, electric_booms
 
     del map
     del drone
     del enemies
     del items
+    del electric_booms
 
 def update() :
     drone.update()
@@ -422,6 +426,10 @@ def update() :
 
     for item in items :
         item.update()
+
+    for e_ball in electric_booms :
+        if e_ball.update() == False :
+            electric_booms.remove(e_ball)
 
     Add_Enemy()
     Add_Item()
@@ -443,6 +451,9 @@ def draw() :
 
     for item in items :
         item.draw()
+        
+    for e_ball in electric_booms :
+        e_ball.draw()
 
     update_canvas()
 
