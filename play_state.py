@@ -339,10 +339,10 @@ def Add_Item() :
         time_create_item -= 1
     pass
 
-def Add_Eball() :
+def Add_Eball(x, y) :
     global electric_booms
 
-    electric_booms += [Electric_Boom()]
+    electric_booms += [Electric_Boom(x, y)]
     pass
 
 def Chk_Drone_N_Enemy() :
