@@ -194,7 +194,8 @@ class Item:
 
         self.alive = True
 
-        self.item_num = self.rand_num % 6
+        self.item_num = 0
+        #self.item_num = self.rand_num % 6
         # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
 
         self.frame_x = self.item_num
@@ -295,8 +296,8 @@ class Electric_Boom:
     def update(self):
         self.time += 1
 
-        self.frame_x = self.time // 5
-        self.frame_y = self.time % 5
+        self.frame_x = self.time % 5
+        self.frame_y = self.time // 5
 
         if self.time == 25 :
             self.alive = False
