@@ -368,6 +368,9 @@ def Chk_Drone_N_Item() :
                 items.remove(item)
     pass
 
+def Chk_Eboom_N_Enemy() :
+    pass
+
 def Chk_Game_End() :
     if not drone.alive :
         #game_framework.quit()   # 임시
