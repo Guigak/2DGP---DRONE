@@ -294,8 +294,9 @@ def Add_Item() :
             items += [Item()]
 
             time_create_item = 100
-        else :
-            time_create_item -= 1
+
+    if time_create_item != 0 :
+        time_create_item -= 1
     pass
 
 def Chk_Drone_N_Enemy() :
