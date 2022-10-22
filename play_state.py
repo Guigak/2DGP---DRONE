@@ -259,6 +259,13 @@ class Item:
         pass
 
     def Chk_with_Drone(self) :
+        tum_x = drone.position_x - self.position_x
+        tum_y = drone.position_y - self.position_y
+
+        tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
+
+        if tum < self.radius + drone.radius :
+            del self
         pass
 
 # function
