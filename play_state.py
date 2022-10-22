@@ -271,7 +271,18 @@ class Item:
         pass
 
 class Electric_Boom:
-    def __init__(self):
+    def __init__(self, item_x, item_y):
+        self.image = load_image('electric_boom.png')
+        self.radius = 100
+        self.position_x = item_x
+        self.position_y = item_y
+
+        self.time = 0
+
+        self.alive = True
+
+        self.frame_x = 0
+        self.frame_y = 0
         pass
 
     def update(self):
