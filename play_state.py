@@ -271,7 +271,7 @@ class Item:
         if self.alive == False :
             match self.item_num :
                 case 0 :
-                    Add_Eball(self.position_x, self.position_y)
+                    Add_Eboom(self.position_x, self.position_y)
                 case _:
                     pass
         
@@ -350,7 +350,7 @@ def Add_Item() :
         time_create_item -= 1
     pass
 
-def Add_Eball(x, y) :
+def Add_Eboom(x, y) :
     global electric_booms
 
     electric_booms += [Electric_Boom(x, y)]
@@ -457,14 +457,15 @@ def update() :
     for item in items :
         item.update()
 
-    for e_ball in electric_booms :
-        if e_ball.update() == False :
-            electric_booms.remove(e_ball)
+    for eboom in electric_booms :
+        if eboom.update() == False :
+            electric_booms.remove(eboom)
 
     Add_Enemy()
     Add_Item()
     Chk_Drone_N_Enemy()
     Chk_Drone_N_Item()
+    Chk_Eboom_N_Enemy()
     Chk_Game_End()
     pass    
 
@@ -482,8 +483,8 @@ def draw() :
     for item in items :
         item.draw()
         
-    for e_ball in electric_booms :
-        e_ball.draw()
+    for eboom in electric_booms :
+        eboom.draw()
 
     update_canvas()
 
