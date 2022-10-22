@@ -265,7 +265,9 @@ class Item:
         tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
 
         if tum < self.radius + drone.radius :
-            del self
+            self.alive = False
+
+            return self.alive
         pass
 
 # function
@@ -304,7 +306,8 @@ def Chk_Drone_N_Enemy() :
 def Chk_Drone_N_Item() :
     if len(items) != 0 :
         for item in items :
-            item.Chk_with_Drone()
+            if item.Chk_with_Drone() == False :
+                items.remove(item)
     pass
 
 def Chk_Game_End() :
