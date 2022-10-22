@@ -332,6 +332,9 @@ def Add_Item() :
         time_create_item -= 1
     pass
 
+def Add_Eball() :
+    pass
+
 def Chk_Drone_N_Enemy() :
     for enemy in enemies :
         enemy.Chk_with_Drone()
