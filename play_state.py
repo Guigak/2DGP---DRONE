@@ -333,6 +333,9 @@ def Add_Item() :
     pass
 
 def Add_Eball() :
+    global electric_booms
+
+    electric_booms += [Electric_Boom()]
     pass
 
 def Chk_Drone_N_Enemy() :
