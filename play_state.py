@@ -258,6 +258,9 @@ class Item:
                             self.position_x, self.position_y)
         pass
 
+    def Chk_with_Drone(self) :
+        pass
+
 # function
 
 def Add_Enemy() :
