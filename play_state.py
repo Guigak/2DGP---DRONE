@@ -294,6 +294,9 @@ def Chk_Drone_N_Enemy() :
         enemy.Chk_with_Drone()
     pass
 
+def Chk_Drone_N_Item() :
+    pass
+
 def Chk_Game_End() :
     if not drone.alive :
         #game_framework.quit()   # 임시
