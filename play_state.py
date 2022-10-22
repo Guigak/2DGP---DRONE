@@ -369,6 +369,9 @@ def Chk_Drone_N_Item() :
     pass
 
 def Chk_Eboom_N_Enemy() :
+    for eboom in electric_booms :
+        for enemy in enemies :
+            eboom.Chk_with_Enemy(enemy)
     pass
 
 def Chk_Game_End() :
