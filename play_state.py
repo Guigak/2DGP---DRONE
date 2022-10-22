@@ -311,6 +311,9 @@ class Electric_Boom:
                             self.position_x, self.position_y)
         pass
 
+    def Chk_with_Enemy(enemy) :
+        pass
+
 # function
 
 def Add_Enemy() :
