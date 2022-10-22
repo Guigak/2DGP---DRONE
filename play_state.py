@@ -302,6 +302,9 @@ def Chk_Drone_N_Enemy() :
     pass
 
 def Chk_Drone_N_Item() :
+    if len(items) != 0 :
+        for item in items :
+            item.Chk_with_Drone()
     pass
 
 def Chk_Game_End() :
@@ -386,6 +389,7 @@ def update() :
     Add_Enemy()
     Add_Item()
     Chk_Drone_N_Enemy()
+    Chk_Drone_N_Item()
     Chk_Game_End()
     pass    
 
