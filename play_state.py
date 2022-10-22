@@ -267,7 +267,14 @@ class Item:
         if tum < self.radius + drone.radius :
             self.alive = False
 
-            return self.alive
+        if self.alive == False :
+            match self.item_num :
+                case 0 :
+                    Add_Eball()
+                case _:
+                    pass
+        
+        return self.alive
         pass
 
 class Electric_Boom:
