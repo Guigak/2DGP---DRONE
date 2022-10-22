@@ -414,7 +414,7 @@ def enter() :
     drone = Drone()
     enemies = [Enemy()]
     items = [Item()]
-    electric_booms = [None]
+    electric_booms = []
 
     enemies[0].Cal_rad()
 
