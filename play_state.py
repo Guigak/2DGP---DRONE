@@ -270,6 +270,16 @@ class Item:
             return self.alive
         pass
 
+class Electric_Boom:
+    def __init__(self):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
+        pass
+
 # function
 
 def Add_Enemy() :
