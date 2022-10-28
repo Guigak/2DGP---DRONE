@@ -9,8 +9,11 @@ WIDTH, HEIGHT = 700, 900
 # class
 
 class Map :
+    image = None
+
     def __init__(self):
-        self.image = load_image('map.png')
+        if Map.image == None :
+            Map.image = load_image('map.png')
         self.speed = 10
         self.move_y = 0
 
@@ -21,8 +24,11 @@ class Map :
         self.move_y = (self.move_y + self.speed) % HEIGHT
 
 class Drone :
+    image = None
+
     def __init__(self):
-        self.image = load_image('drone.png')
+        if Drone.image == None :
+            Drone.image = load_image('drone.png')
         self.radius = 50
         self.position_x = WIDTH // 2
         self.position_y = self.radius
@@ -96,8 +102,11 @@ class Drone :
         pass
 
 class Enemy :
+    image = None
+
     def __init__(self):
-        self.image = load_image('enemy.png')
+        if Enemy.image == None :
+            Enemy.image = load_image('enemy.png')
         self.radius = 50
         self.default_x = self.position_x = random.randint(0, WIDTH)
         self.default_y = self.position_y = HEIGHT + self.radius
@@ -172,8 +181,11 @@ class Enemy :
         pass
 
 class Item:
+    image = None
+
     def __init__(self):
-        self.image = load_image('item_icons.png')
+        if Item.image == None :
+            Item.image = load_image('item_icons.png')
         self.radius = 25
         self.default_x = self.position_x = random.randint(0, WIDTH)
         self.default_y = self.position_y = HEIGHT + self.radius
@@ -279,8 +291,11 @@ class Item:
         pass
 
 class Electric_Boom:
+    image = None
+
     def __init__(self, item_x, item_y):
-        self.image = load_image('electric_boom.png')
+        if Electric_Boom.image == None :
+            Electric_Boom.image = load_image('electric_boom.png')
         self.radius = 100
         self.position_x = item_x
         self.position_y = item_y
