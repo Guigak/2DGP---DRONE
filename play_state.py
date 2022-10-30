@@ -119,18 +119,22 @@ class Drone :
                             self.position_x, self.position_y)
 
         self.frame_x = (self.frame_x + 1) % 2
-        
-        self.image.clip_draw(self.radius * 2 * self.frame_x, self.radius * 2 * (3 - self.frame_y),\
-                            self.radius * 2, self.radius * 2,\
-                            self.position_x, self.position_y)
 
-        self.frame_x = (self.frame_x + 1) % 2
+        # shield
+        
+        if self.shield :
+            self.shield_image.clip_draw(self.shield_radius * 2 * self.shield_frame_x, self.shield_frame_y,\
+                                self.shield_radius * 2, self.shield_radius * 2,\
+                                self.position_x, self.position_y)
+
+            self.shield_frame_x = (self.shield_frame_x + 1) % 4
 
         pass
 
     def Shield_on(self) :
         self.shield = True
         self.shield_time = 50
+        self.shield_frame_x = 0
 
 class Enemy :
     image = None
