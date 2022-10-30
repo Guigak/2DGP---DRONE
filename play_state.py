@@ -101,6 +101,9 @@ class Drone :
         self.frame_x = (self.frame_x + 1) % 2
         pass
 
+    def Shield_on(self) :
+        pass
+
 class Enemy :
     image = None
 
