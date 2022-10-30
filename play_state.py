@@ -93,6 +93,14 @@ class Drone :
             and (self.left or self.right) :
             self.frame_y = 1
 
+        # about shield
+
+        if self.shield :
+            self.shield_time -= 1
+
+            if self.shield_time == 0 :
+                self.shield = False
+
     def draw(self):
         self.image.clip_draw(self.radius * 2 * self.frame_x, self.radius * 2 * (3 - self.frame_y),\
                             self.radius * 2, self.radius * 2,\
