@@ -241,7 +241,7 @@ class Item:
 
         self.alive = True
 
-        self.item_num = 0
+        self.item_num = self.rand_num % 3
         #self.item_num = self.rand_num % 6
         # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
 
@@ -319,6 +319,10 @@ class Item:
             match self.item_num :
                 case 0 :
                     Add_Eboom(self.position_x, self.position_y)
+                case 1 :
+                    pass
+                case 2 :
+                    drone.Shield_on()
                 case _:
                     pass
         
