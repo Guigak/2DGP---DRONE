@@ -48,6 +48,9 @@ class Drone :
         self.frame_x = 0
         self.frame_y = 0
 
+        self.shield_frame_x = 0
+        self.shield_frame_y = 0
+
     def update(self):
         # about moving
     
@@ -107,6 +110,8 @@ class Drone :
                             self.position_x, self.position_y)
 
         self.frame_x = (self.frame_x + 1) % 2
+
+
         pass
 
     def Shield_on(self) :
