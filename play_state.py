@@ -25,10 +25,14 @@ class Map :
 
 class Drone :
     image = None
+    shield_image = None
 
     def __init__(self):
         if Drone.image == None :
             Drone.image = load_image('drone.png')
+        if Drone.shield_image == None :
+            Drone.shield_image = load_image('electric_shield.png')
+            
         self.radius = 50
         self.position_x = WIDTH // 2
         self.position_y = self.radius
