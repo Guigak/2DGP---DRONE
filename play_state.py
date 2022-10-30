@@ -102,7 +102,8 @@ class Drone :
         pass
 
     def Shield_on(self) :
-        pass
+        self.shield = True
+        self.shield_time = 50
 
 class Enemy :
     image = None
