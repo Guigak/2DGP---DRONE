@@ -30,9 +30,7 @@ class Drone :
     def __init__(self):
         if Drone.image == None :
             Drone.image = load_image('drone.png')
-        if Drone.shield_image == None :
-            Drone.shield_image = load_image('electric_shield.png')
-            
+
         self.radius = 50
         self.position_x = WIDTH // 2
         self.position_y = self.radius
@@ -51,6 +49,13 @@ class Drone :
 
         self.frame_x = 0
         self.frame_y = 0
+
+        # shield
+        
+        if Drone.shield_image == None :
+            Drone.shield_image = load_image('electric_shield.png')
+
+        self.shield_radius = 75
 
         self.shield_frame_x = 0
         self.shield_frame_y = 0
@@ -114,7 +119,12 @@ class Drone :
                             self.position_x, self.position_y)
 
         self.frame_x = (self.frame_x + 1) % 2
+        
+        self.image.clip_draw(self.radius * 2 * self.frame_x, self.radius * 2 * (3 - self.frame_y),\
+                            self.radius * 2, self.radius * 2,\
+                            self.position_x, self.position_y)
 
+        self.frame_x = (self.frame_x + 1) % 2
 
         pass
 
