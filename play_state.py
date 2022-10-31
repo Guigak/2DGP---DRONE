@@ -242,7 +242,7 @@ class Item:
 
         self.alive = True
 
-        self.item_num = self.rand_num % 3
+        self.item_num = self.rand_num % 4
         #self.item_num = self.rand_num % 6
         # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
 
@@ -395,7 +395,7 @@ class Big_Drone :
         if Big_Drone.image == None :
             Big_Drone.image = load_image('big_drone.png')
 
-        self.width = Big_Drone.image.w
+        self.width = Big_Drone.image.w // 2
         self.height = Big_Drone.image.h
 
         self.position_x = item_x
@@ -413,10 +413,10 @@ class Big_Drone :
         pass
 
     def update(self):
-        self.position_x = self.position_x + self.speed
+        self.position_y = self.position_y + self.speed
 
-        self.rect['x1'] = self.rect['x1'] + self.speed
-        self.rect['x2'] = self.rect['x2'] + self.speed
+        self.rect['y1'] = self.rect['y1'] + self.speed
+        self.rect['y2'] = self.rect['y2'] + self.speed
 
         if self.rect['y2'] > HEIGHT :
             self.alive = False
@@ -426,10 +426,10 @@ class Big_Drone :
 
     def draw(self):
         self.image.clip_draw(self.width * self.frame_x, self.frame_y,\
-                            self.width * 2, self.height * 2,\
+                            self.width, self.height,\
                             self.position_x, self.position_y)
 
-        self.frame_x = self.time % 2
+        self.frame_x = (self.frame_x + 1) % 2
         pass
 
     def Chk_with_Enemy(self, enemy) :
