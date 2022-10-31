@@ -504,6 +504,9 @@ def Chk_Eboom_N_Enemy() :
             eboom.Chk_with_Enemy(enemy)
     pass
 
+def Chk_Bdrone_N_Enemy() :
+    pass
+
 def Chk_Game_End() :
     if not drone.alive :
         #game_framework.quit()   # 임시
