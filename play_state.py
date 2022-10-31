@@ -505,6 +505,9 @@ def Chk_Eboom_N_Enemy() :
     pass
 
 def Chk_Bdrone_N_Enemy() :
+    for bdrone in big_drones :
+        for enemy in enemies :
+            bdrone.Chk_with_Enemy(enemy)
     pass
 
 def Chk_Game_End() :
