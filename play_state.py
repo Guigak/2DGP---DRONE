@@ -429,6 +429,9 @@ class Big_Drone :
         self.frame_x = self.time % 2
         pass
 
+    def Chk_with_Enemy(self) :
+        pass
+
 # function
 
 def Add_Enemy() :
