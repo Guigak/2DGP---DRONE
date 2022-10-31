@@ -447,6 +447,16 @@ class Big_Drone :
             enemy.alive = False
         pass
 
+class Mini_Drone :
+    def __init__(self):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
+        pass
+
 # function
 
 def Add_Enemy() :
