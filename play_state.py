@@ -422,6 +422,11 @@ class Big_Drone :
         pass
 
     def draw(self):
+        self.image.clip_draw(self.width * self.frame_x, self.frame_y,\
+                            self.width * 2, self.height * 2,\
+                            self.position_x, self.position_y)
+
+        self.frame_x = self.time % 2
         pass
 
 # function
