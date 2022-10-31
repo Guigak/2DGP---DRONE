@@ -386,7 +386,27 @@ class Shuriken :
         pass
 
 class Big_Drone :
-    def __init__(self):
+    image = None
+
+    def __init__(self, item_x, item_y):
+        if Big_Drone.image == None :
+            Big_Drone.image = load_image('big_drone.png')
+
+        self.width = Big_Drone.image.w
+        self.height = Big_Drone.image.h
+
+        self.position_x = item_x
+        self.position_y = item_y
+
+        self.rect = {'x1' : self.position_x - self.width / 2, 'y1' : self.position_y + self.height / 2,\
+                    'x2' : self.position_x + self.width / 2, 'y2' : self.position_y - self.height / 2}
+
+        self.speed = 8
+
+        self.alive = True
+
+        self.frame_x = 0
+        self.frame_y = 0
         pass
 
     def update(self):
