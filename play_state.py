@@ -324,6 +324,8 @@ class Item:
                     pass
                 case 2 :
                     drone.Shield_on()
+                case 3 :
+                    Add_Bdrone(self.position_x, self.position_y)
                 case _:
                     pass
         
@@ -608,6 +610,7 @@ def update() :
     Chk_Drone_N_Enemy()
     Chk_Drone_N_Item()
     Chk_Eboom_N_Enemy()
+    Chk_Bdrone_N_Enemy()
     Chk_Game_End()
     pass    
 
