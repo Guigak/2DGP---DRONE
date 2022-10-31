@@ -138,11 +138,12 @@ class Drone :
 
 class Enemy :
     image = None
+    radius = 50
 
     def __init__(self):
         if Enemy.image == None :
             Enemy.image = load_image('enemy.png')
-        self.radius = 50
+        #self.radius = 50
         self.default_x = self.position_x = random.randint(0, WIDTH)
         self.default_y = self.position_y = HEIGHT + self.radius
 
@@ -398,8 +399,8 @@ class Big_Drone :
         self.position_x = item_x
         self.position_y = item_y
 
-        self.rect = {'x1' : self.position_x - self.width / 2, 'y1' : self.position_y + self.height / 2,\
-                    'x2' : self.position_x + self.width / 2, 'y2' : self.position_y - self.height / 2}
+        self.rect = {'x1' : self.position_x - self.width / 2 - Enemy.radius, 'y1' : self.position_y + self.height / 2 + Enemy.radius,\
+                    'x2' : self.position_x + self.width / 2 + Enemy.radius, 'y2' : self.position_y - self.height / 2 - Enemy.radius}
 
         self.speed = 8
 
@@ -429,7 +430,7 @@ class Big_Drone :
         self.frame_x = self.time % 2
         pass
 
-    def Chk_with_Enemy(self) :
+    def Chk_with_Enemy(self, enemy) :
         pass
 
 # function
