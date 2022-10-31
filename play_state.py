@@ -481,6 +481,9 @@ def Add_Eboom(x, y) :
     pass
 
 def Add_Bdrone(x, y) :
+    global big_drones
+
+    big_drones += [Big_Drone(x, y)]
     pass
 
 def Chk_Drone_N_Enemy() :
