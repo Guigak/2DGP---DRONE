@@ -410,6 +410,15 @@ class Big_Drone :
         pass
 
     def update(self):
+        self.position_x = self.position_x + self.speed
+
+        self.rect['x1'] = self.rect['x1'] + self.speed
+        self.rect['x2'] = self.rect['x2'] + self.speed
+
+        if self.rect['y2'] > HEIGHT :
+            self.alive = False
+
+        return self.alive
         pass
 
     def draw(self):
