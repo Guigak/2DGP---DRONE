@@ -543,19 +543,21 @@ drone = None
 enemies = [None]
 items = [None]
 electric_booms = [None]
+big_drones = [None]
 
 time_create_enemy = None
 time_create_item = None
 running = True
 
 def enter() :
-    global map, drone, enemies, time_create_enemy, items, time_create_item, electric_booms, running
+    global map, drone, enemies, time_create_enemy, items, time_create_item, electric_booms, big_drones, running
 
     map = Map()
     drone = Drone()
     enemies = [Enemy()]
     items = [Item()]
     electric_booms = []
+    big_drones = []
 
     enemies[0].Cal_rad()
 
@@ -585,6 +587,10 @@ def update() :
         if eboom.update() == False :
             electric_booms.remove(eboom)
 
+    for bdrone in big_drones :
+        if bdrone.update() == False :
+            big_drones.remove(bdrone)
+
     Add_Enemy()
     Add_Item()
     Chk_Drone_N_Enemy()
@@ -609,6 +615,9 @@ def draw() :
         
     for eboom in electric_booms :
         eboom.draw()
+
+    for bdrone in big_drones :
+        bdrone.draw()
 
     update_canvas()
 
