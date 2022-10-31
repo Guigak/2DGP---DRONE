@@ -375,7 +375,17 @@ class Electric_Boom:
             enemy.alive = False
         pass
 
-class Shuriken:
+class Shuriken :
+    def __init__(self):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
+        pass
+
+class Big_Drone :
     def __init__(self):
         pass
 
