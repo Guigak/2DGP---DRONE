@@ -431,6 +431,18 @@ class Big_Drone :
         pass
 
     def Chk_with_Enemy(self, enemy) :
+        chk1 = chk2 = False
+
+        if enemy.position_x >= self.rect['x1']\
+            and enemy.position_x <= self.rect['x2'] :
+            chk1 = True
+
+        if enemy.position_y <= self.rect['y1']\
+            and enemy.position_y >= self.rect['y2'] :
+            chk2 = True
+
+        if chk1 and chk2 :
+            enemy.alive = False
         pass
 
 # function
