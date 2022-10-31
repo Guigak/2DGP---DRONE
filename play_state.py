@@ -480,6 +480,9 @@ def Add_Eboom(x, y) :
     electric_booms += [Electric_Boom(x, y)]
     pass
 
+def Add_Bdrone(x, y) :
+    pass
+
 def Chk_Drone_N_Enemy() :
     for enemy in enemies :
         enemy.Chk_with_Drone()
