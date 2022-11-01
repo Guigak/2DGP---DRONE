@@ -41,6 +41,8 @@ class Drone :
         self.down = False
         self.left = False
         self.right = False
+
+        self.direct = 2
         
         self.shield = False
         self.shield_time = 0
@@ -69,17 +71,23 @@ class Drone :
 
             self.frame_y = 0
 
+            self.direct = 2
+
         if self.down :
             if self.position_y > self.radius :
                 self.position_y -= self.speed
                 
             self.frame_y = 0
+
+            self.direct = -2
                 
         if self.left :
             if self.position_x > self.radius :
                 self.position_x -= self.speed
                 
             self.frame_y = 1
+
+            self.direct = 4
                 
         if self.right :
             if self.position_x < WIDTH - self.radius :
@@ -87,23 +95,53 @@ class Drone :
                 
             self.frame_y = 1
 
+            self.direct = 0
+
         # about drawing
 
-        if (self.up and self.left)\
-            or (self.down and self.right) :
+        if (self.up and self.left) :
             self.frame_y = 2
 
-        if (self.up and self.right)\
-            or (self.down and self.left) :
+            self.direct = 3
+
+        if (self.down and self.right) :
+            self.frame_y = 2
+            
+            self.direct = -1
+
+        if (self.up and self.right) :
             self.frame_y = 3
+            
+            self.direct = 1
+
+        if (self.down and self.left) :
+            self.frame_y = 3
+            
+            self.direct = -3
 
         if (self.left and self.right)\
-            and (self.up or self.down) :
+            and (self.up) :
             self.frame_y = 0
+            
+            self.direct = 2
+
+        if (self.left and self.right)\
+            and (self.down) :
+            self.frame_y = 0
+            
+            self.direct = -2
 
         if (self.up and self.down)\
-            and (self.left or self.right) :
+            and (self.left) :
             self.frame_y = 1
+            
+            self.direct = 4
+
+        if (self.up and self.down)\
+            and (self.right) :
+            self.frame_y = 1
+            
+            self.direct = 0
 
         # about shield
 
