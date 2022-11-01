@@ -495,6 +495,8 @@ class Mini_Drone :
         self.default_x = self.position_x = item_x
         self.default_y = self.position_y = item_y
 
+        self.radius = 25
+
         self.rad = 45 * drone_direct
 
         self.speed = 5
@@ -509,6 +511,13 @@ class Mini_Drone :
         pass
 
     def draw(self):
+        self.image.clip_composite_draw(self.radius * 2 * self.frame_x, self.frame_y,\
+                                        self.radius * 2, self.radius * 2,\
+                                        self.rad, 'n',\
+                                        self.position_x, self.position_y,\
+                                        self.radius * 2, self.radius * 2)
+
+        self.frame_x = (self.frame_x + 1) % 2
         pass
 
 # function
