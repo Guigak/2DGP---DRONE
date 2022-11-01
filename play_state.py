@@ -364,6 +364,8 @@ class Item:
                     drone.Shield_on()
                 case 3 :
                     Add_Bdrone(self.position_x, self.position_y)
+                case 4 :
+                    Get_Mdrone()
                 case _:
                     pass
         
@@ -725,6 +727,7 @@ def update() :
 
     Add_Enemy()
     Add_Item()
+    Add_Mdrone()
     Chk_Drone_N_Enemy()
     Chk_Drone_N_Item()
     Chk_Eboom_N_Enemy()
