@@ -537,6 +537,13 @@ class Mini_Drone :
         pass
 
     def Chk_with_Enemy(self, enemy) :
+        tum_x = enemy.position_x - self.position_x
+        tum_y = enemy.position_y - self.position_y
+
+        tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
+
+        if tum < self.radius + enemy.radius :
+            enemy.alive = False
         pass
 
 # function
