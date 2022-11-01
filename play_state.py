@@ -488,12 +488,12 @@ class Big_Drone :
 class Mini_Drone :
     image = None
 
-    def __init__(self, item_x, item_y,drone_direct):
+    def __init__(self, drone_x, drone_y,drone_direct):
         if Mini_Drone.image == None :
             Mini_Drone.image = load_image('mini_drone.png')
 
-        self.default_x = self.position_x = item_x
-        self.default_y = self.position_y = item_y
+        self.default_x = self.position_x = drone_x
+        self.default_y = self.position_y = drone_y
 
         self.radius = 25
 
@@ -571,6 +571,9 @@ def Add_Bdrone(x, y) :
     global big_drones
 
     big_drones += [Big_Drone(x, y)]
+    pass
+
+def Add_Mdrone(x, y, d) :
     pass
 
 def Chk_Drone_N_Enemy() :
