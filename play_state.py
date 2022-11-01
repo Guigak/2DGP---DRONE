@@ -580,12 +580,12 @@ def Add_Bdrone(x, y) :
     big_drones += [Big_Drone(x, y)]
     pass
 
-def Add_Mdrone(x, y, d) :
+def Add_Mdrone() :
     global mini_drones, time_create_mdrone
 
     if num_create_mdrone != 0 :
         if time_create_mdrone == 0 :
-            mini_drones += [Mini_Drone()]
+            mini_drones += [Mini_Drone(drone.position_x, drone.position_y, drone.direct)]
 
             time_create_mdrone = 2
 
