@@ -448,7 +448,23 @@ class Big_Drone :
         pass
 
 class Mini_Drone :
-    def __init__(self):
+    image = None
+
+    def __init__(self, item_x, item_y):
+        if Mini_Drone.image == None :
+            Mini_Drone.image = load_image('mini_drone.png')
+
+        self.default_x = self.position_x = item_x
+        self.default_y = self.position_y = item_y
+
+        self.rad = 0
+
+        self.speed = 5
+
+        self.time = 0
+
+        self.frame_x = 0
+        self.frame_y = 0
         pass
 
     def update(self):
