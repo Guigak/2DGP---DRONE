@@ -536,6 +536,9 @@ class Mini_Drone :
         self.frame_x = (self.frame_x + 1) % 2
         pass
 
+    def Chk_with_Enemy(self, enemy) :
+        pass
+
 # function
 
 def Get_Mdrone() :
