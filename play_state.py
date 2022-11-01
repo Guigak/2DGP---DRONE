@@ -574,6 +574,16 @@ def Add_Bdrone(x, y) :
     pass
 
 def Add_Mdrone(x, y, d) :
+    global mini_drones, time_create_mdrone
+
+    if num_create_mdrone != 0 :
+        if time_create_mdrone == 0 :
+            mini_drones += [Mini_Drone()]
+
+            time_create_mdrone = 2
+
+    if time_create_mdrone != 0 :
+        time_create_mdrone -= 1
     pass
 
 def Chk_Drone_N_Enemy() :
