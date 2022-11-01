@@ -508,6 +508,18 @@ class Mini_Drone :
         pass
 
     def update(self):
+        self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
+        self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
+
+        self.time += 1
+
+        if (self.position_x < -self.radius) or (self.position_x > WIDTH + self.radius) :
+            self.alive = False
+
+        if (self.position_y < -self.radius) or (self.position_y > HEIGHT + self.radius) :
+            self.alive = False
+
+        return self.alive
         pass
 
     def draw(self):
