@@ -280,7 +280,7 @@ class Item:
 
         self.alive = True
 
-        self.item_num = self.rand_num % 4
+        self.item_num = 4
         #self.item_num = self.rand_num % 6
         # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
 
@@ -499,11 +499,13 @@ class Mini_Drone :
 
         self.radius = 25
 
-        self.rad = 45 * drone_direct
+        self.rad = 45 * drone_direct * math.pi / 180
 
         self.speed = 5
 
         self.time = 0
+
+        self.alive = True
 
         self.frame_x = 0
         self.frame_y = 0
@@ -527,7 +529,7 @@ class Mini_Drone :
     def draw(self):
         self.image.clip_composite_draw(self.radius * 2 * self.frame_x, self.frame_y,\
                                         self.radius * 2, self.radius * 2,\
-                                        self.rad, 'n',\
+                                        self.rad - 90 * math.pi / 180, 'n',\
                                         self.position_x, self.position_y,\
                                         self.radius * 2, self.radius * 2)
 
@@ -581,13 +583,14 @@ def Add_Bdrone(x, y) :
     pass
 
 def Add_Mdrone() :
-    global mini_drones, time_create_mdrone
+    global mini_drones, time_create_mdrone, num_create_mdrone
 
     if num_create_mdrone != 0 :
         if time_create_mdrone == 0 :
             mini_drones += [Mini_Drone(drone.position_x, drone.position_y, drone.direct)]
 
-            time_create_mdrone = 2
+            num_create_mdrone -= 1
+            time_create_mdrone = 4
 
     if time_create_mdrone != 0 :
         time_create_mdrone -= 1
