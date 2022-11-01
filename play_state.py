@@ -535,7 +535,9 @@ class Mini_Drone :
 # function
 
 def Get_Mdrone() :
-    pass
+    global num_create_mdrone
+
+    num_create_mdrone += 10
 
 def Add_Enemy() :
     global enemies, time_create_enemy
