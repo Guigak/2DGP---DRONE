@@ -630,6 +630,9 @@ def Chk_Bdrone_N_Enemy() :
             bdrone.Chk_with_Enemy(enemy)
     pass
 
+def CHk_Mdrone_N_Enemy() :
+    pass
+
 def Chk_Game_End() :
     if not drone.alive :
         #game_framework.quit()   # 임시
