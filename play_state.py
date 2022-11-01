@@ -631,6 +631,9 @@ def Chk_Bdrone_N_Enemy() :
     pass
 
 def CHk_Mdrone_N_Enemy() :
+    for mdrone in mini_drones :
+        for enemy in enemies :
+            mdrone.Chk_with_Enemy(enemy)
     pass
 
 def Chk_Game_End() :
