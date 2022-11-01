@@ -488,14 +488,14 @@ class Big_Drone :
 class Mini_Drone :
     image = None
 
-    def __init__(self, item_x, item_y):
+    def __init__(self, item_x, item_y,drone_direct):
         if Mini_Drone.image == None :
             Mini_Drone.image = load_image('mini_drone.png')
 
         self.default_x = self.position_x = item_x
         self.default_y = self.position_y = item_y
 
-        self.rad = 0
+        self.rad = 45 * drone_direct
 
         self.speed = 5
 
