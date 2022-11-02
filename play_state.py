@@ -622,6 +622,9 @@ class Electric_Ball :
         self.frame_x = (self.frame_x + 1) % 4
         pass
 
+    def Chk_with_Enemy(self, enemy) :
+        pass
+
 
 # function
 
