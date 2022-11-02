@@ -546,6 +546,17 @@ class Mini_Drone :
             enemy.alive = False
         pass
 
+class Electric_Ball :
+    def __init__(self):
+        pass
+
+    def update(self):
+        pass
+
+    def draw(self):
+        pass
+
+
 # function
 
 def Get_Mdrone() :
