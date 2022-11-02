@@ -679,6 +679,9 @@ def Add_Mdrone() :
         time_create_mdrone -= 1
     pass
 
+def Add_Eball(x, y) :
+    pass
+
 def Chk_Drone_N_Enemy() :
     for enemy in enemies :
         enemy.Chk_with_Drone()
