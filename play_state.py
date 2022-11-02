@@ -756,6 +756,7 @@ items = [None]
 electric_booms = [None]
 big_drones = [None]
 mini_drones = [None]
+electric_balls = [None]
 
 time_create_enemy = None
 time_create_item = None
@@ -766,7 +767,7 @@ num_create_mdrone = None
 running = True
 
 def enter() :
-    global map, drone, enemies, time_create_enemy, items, time_create_item, electric_booms, big_drones, mini_drones, time_create_mdrone, num_create_mdrone, running
+    global map, drone, enemies, time_create_enemy, items, time_create_item, electric_booms, big_drones, mini_drones, time_create_mdrone, num_create_mdrone, electric_balls, running
 
     map = Map()
     drone = Drone()
@@ -775,6 +776,7 @@ def enter() :
     electric_booms = []
     big_drones = []
     mini_drones = []
+    electric_balls = []
 
     enemies[0].Cal_rad()
 
@@ -787,7 +789,7 @@ def enter() :
 
 # 게임 종료 - 객체를 소멸
 def exit() :
-    global map, drone, enemies, items, electric_booms, big_drones, mini_drones
+    global map, drone, enemies, items, electric_booms, big_drones, mini_drones, electric_balls
 
     del map
     del drone
@@ -796,6 +798,7 @@ def exit() :
     del electric_booms
     del big_drones
     del mini_drones
+    del electric_balls
 
 def update() :
     drone.update()
@@ -816,6 +819,10 @@ def update() :
     for mdrone in mini_drones :
         if mdrone.update() == False :
             mini_drones.remove(mdrone)
+
+    for eball in electric_balls :
+        if eball.update() == False :
+            electric_balls.remove(eball)
 
     Add_Enemy()
     Add_Item()
@@ -851,6 +858,9 @@ def draw() :
     for mdrone in mini_drones :
         mdrone.draw()
 
+    for eball in electric_balls :
+        eball.draw()
+        
     update_canvas()
 
     delay(0.05)
