@@ -366,6 +366,8 @@ class Item:
                     Add_Bdrone(self.position_x, self.position_y)
                 case 4 :
                     Get_Mdrone()
+                case 5 :
+                    Add_Eball(self.position_x, self.position_y)
                 case _:
                     pass
         
