@@ -680,6 +680,9 @@ def Add_Mdrone() :
     pass
 
 def Add_Eball(x, y) :
+    global electric_balls
+
+    electric_balls += [Electric_Ball(x, y, drone.direct)]
     pass
 
 def Chk_Drone_N_Enemy() :
