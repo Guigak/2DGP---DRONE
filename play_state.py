@@ -547,7 +547,25 @@ class Mini_Drone :
         pass
 
 class Electric_Ball :
-    def __init__(self):
+    image = None
+
+    def __init__(self, item_x, item_y, drone_direct):
+        if Electric_Ball.image == None :
+            Electric_Ball.image = load_image('electric_ball.png')
+
+        self.radius = 75
+        self.default_x = self.position_x = item_x
+        self.default_y = self.position_y = item_y
+        
+        self.rad = 45 * drone_direct * math.pi / 180
+
+        self.speed = 10
+        self.time = 0
+
+        self.alive = True
+
+        self.frame_x = 0
+        self.frame_y = 0        
         pass
 
     def update(self):
