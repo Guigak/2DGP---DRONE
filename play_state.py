@@ -857,7 +857,8 @@ def update() :
     Chk_Drone_N_Item()
     Chk_Eboom_N_Enemy()
     Chk_Bdrone_N_Enemy()
-    CHk_Mdrone_N_Enemy()
+    Chk_Mdrone_N_Enemy()
+    Chk_Eball_N_Enemy()
     Chk_Game_End()
     pass    
 
