@@ -730,6 +730,9 @@ def Chk_Mdrone_N_Enemy() :
     pass
 
 def Chk_Eball_N_Enemy() :
+    for eball in electric_balls :
+        for enemy in enemies :
+            eball.Chk_with_Enemy(enemy)
     pass
 
 def Chk_Game_End() :
