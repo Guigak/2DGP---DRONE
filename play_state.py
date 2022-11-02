@@ -280,7 +280,7 @@ class Item:
 
         self.alive = True
 
-        self.item_num = 4
+        self.item_num = 5
         #self.item_num = self.rand_num % 6
         # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
 
@@ -618,6 +618,8 @@ class Electric_Ball :
         self.image.clip_draw(self.radius * 2 * self.frame_x, self.frame_y,\
                             self.radius * 2, self.radius * 2,\
                             self.position_x, self.position_y)
+
+        self.frame_x = (self.frame_x + 1) % 4
         pass
 
 
