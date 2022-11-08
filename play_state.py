@@ -564,6 +564,7 @@ class Electric_Ball :
         self.speed = 10
         self.time = 0
 
+        self.time_alive = 0
         self.alive = True
 
         self.frame_x = 0
@@ -572,6 +573,7 @@ class Electric_Ball :
 
     def update(self):
         self.time += 1
+        self.time_alive += 1
         self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
         self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
 
@@ -612,6 +614,11 @@ class Electric_Ball :
             self.rad = -self.rad
 
             self.time = 0
+
+        if self.time_alive == 100 :
+            self.alive = False
+
+        return self.alive
         pass
 
     def draw(self):
