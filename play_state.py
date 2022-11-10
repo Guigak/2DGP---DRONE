@@ -438,7 +438,7 @@ class Shuriken :
 
         self.max_speed = 10
 
-        self.target = 0
+        self.target = enemies[random.randint(0, len(enemies) - 1)]
 
         self.explosion = False
 
@@ -482,6 +482,9 @@ class Shuriken :
             self.image_e.clip_draw(self.radius * 2 * self.frame_x, self.frame_y,\
                                 self.radius * 2, self.radius * 2,\
                                 self.position_x, self.position_y)
+        pass
+
+    def targeting(self) :
         pass
 
 class Big_Drone :
