@@ -493,11 +493,11 @@ class Shuriken :
 
     def draw(self):
         if self.explosion == False :
-            self.image_d.clip_draw(self.radius * 2 * self.frame_x, self.frame_y,\
+            self.image_d.clip_draw(self.radius * 2 * self.frame_x, self.radius * 2 * (2 - self.frame_y),\
                                 self.radius * 2, self.radius * 2,\
                                 self.position_x, self.position_y)
         else :
-            self.image_e.clip_draw(self.radius * 2 * self.frame_x, self.frame_y,\
+            self.image_e.clip_draw(self.radius * 2 * self.frame_x, self.radius * 2 * (2 - self.frame_y),\
                                 self.radius * 2, self.radius * 2,\
                                 self.position_x, self.position_y)
         pass
