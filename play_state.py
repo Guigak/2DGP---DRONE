@@ -847,6 +847,7 @@ electric_booms = [None]
 big_drones = [None]
 mini_drones = [None]
 electric_balls = [None]
+shurikens = [None]
 
 time_create_enemy = None
 time_create_item = None
@@ -857,7 +858,7 @@ num_create_mdrone = None
 running = True
 
 def enter() :
-    global map, drone, enemies, time_create_enemy, items, time_create_item, electric_booms, big_drones, mini_drones, time_create_mdrone, num_create_mdrone, electric_balls, running
+    global map, drone, enemies, time_create_enemy, items, time_create_item, electric_booms, big_drones, mini_drones, time_create_mdrone, num_create_mdrone, electric_balls, shurikens, running
 
     map = Map()
     drone = Drone()
@@ -867,6 +868,7 @@ def enter() :
     big_drones = []
     mini_drones = []
     electric_balls = []
+    shurikens = []
 
     enemies[0].Cal_rad()
 
@@ -879,7 +881,7 @@ def enter() :
 
 # 게임 종료 - 객체를 소멸
 def exit() :
-    global map, drone, enemies, items, electric_booms, big_drones, mini_drones, electric_balls
+    global map, drone, enemies, items, electric_booms, big_drones, mini_drones, electric_balls, shurikens
 
     del map
     del drone
@@ -889,6 +891,7 @@ def exit() :
     del big_drones
     del mini_drones
     del electric_balls
+    del shurikens
 
 def update() :
     drone.update()
@@ -913,6 +916,10 @@ def update() :
     for eball in electric_balls :
         if eball.update() == False :
             electric_balls.remove(eball)
+
+    for shuriken in shurikens :
+        if shuriken.update() == False :
+            shurikens.remove(shuriken)
 
     Add_Enemy()
     Add_Item()
@@ -951,6 +958,9 @@ def draw() :
 
     for eball in electric_balls :
         eball.draw()
+
+    for shuriken in shurikens :
+        shuriken.draw()
         
     update_canvas()
 
