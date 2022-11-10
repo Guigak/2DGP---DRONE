@@ -467,8 +467,26 @@ class Shuriken :
                 if self.move_y > -self.max_speed :
                     self.move_y -= 1
 
-        self.position_x += self.move_x
-        self.position_y += self.move_y
+            self.position_x += self.move_x
+            self.position_y += self.move_y
+
+            self.frame_x += 1
+
+            if self.frame_x >= 4 :
+                self.frame_x = self.frame_x % 4
+
+                self.frame_y += 1
+                self.frame_y = self.frame_y % 3
+        else :
+            self.frame_x += 1
+
+            if self.frame_x >= 2 :
+                self.frame_x = self.frame_x % 2
+
+                self.frame_y += 1
+                
+                if self.frame_y >= 3 :
+                    self.alive = False
 
         return self.alive
         pass
