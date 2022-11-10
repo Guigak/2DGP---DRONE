@@ -764,6 +764,9 @@ def Add_Eball(x, y) :
     pass
 
 def Add_Shuriken(x, y) :
+    global shurikens
+
+    shurikens += [Shuriken(x, y)]
     pass
 
 def Chk_Drone_N_Enemy() :
