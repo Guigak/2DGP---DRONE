@@ -485,7 +485,7 @@ class Shuriken :
         pass
 
     def targeting(self) :
-        pass
+        self.target = enemies[random.randint(0, len(enemies) - 1)]
 
 class Big_Drone :
     image = None
