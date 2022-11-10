@@ -763,6 +763,9 @@ def Add_Eball(x, y) :
     electric_balls += [Electric_Ball(x, y, drone.direct)]
     pass
 
+def Add_Shuriken(x, y) :
+    pass
+
 def Chk_Drone_N_Enemy() :
     for enemy in enemies :
         enemy.Chk_with_Drone()
