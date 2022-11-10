@@ -359,7 +359,7 @@ class Item:
                 case 0 :
                     Add_Eboom(self.position_x, self.position_y)
                 case 1 :
-                    pass
+                    Add_Shuriken(self.position_x, self.position_y)
                 case 2 :
                     drone.Shield_on()
                 case 3 :
