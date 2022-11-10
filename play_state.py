@@ -280,8 +280,8 @@ class Item:
 
         self.alive = True
 
-        self.item_num = 5
-        #self.item_num = self.rand_num % 6
+        #self.item_num = 5
+        self.item_num = self.rand_num % 6
         # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
 
         self.frame_x = self.item_num
@@ -421,10 +421,35 @@ class Electric_Boom:
         pass
 
 class Shuriken :
-    def __init__(self):
+    image_d = None
+    image_e = None
+
+    def __init__(self, item_x, item_y):
+        if Shuriken.image_d == None :
+            Shuriken.image_d = load_image('shuriken_drone.png')
+            Shuriken.image_e = load_image('shuriken_explosion.png')
+
+        self.radius = 50    # e : 75
+        self.position_x = item_x
+        self.position_y = item_y
+
+        self.move_x = 0
+        self.move_y = 0
+
+        self.max_speed = 10
+
+        self.target = 0
+
+        self.explosion = False
+
+        self.alive = True
+
+        self.frame_x = 0
+        self.frame_y = 0
         pass
 
     def update(self):
+        
         pass
 
     def draw(self):
