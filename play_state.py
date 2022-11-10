@@ -487,6 +487,9 @@ class Shuriken :
     def targeting(self) :
         self.target = enemies[random.randint(0, len(enemies) - 1)]
 
+    def Chk_with_Enemy(self, enemy) :
+        pass
+
 class Big_Drone :
     image = None
 
