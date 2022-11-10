@@ -449,7 +449,28 @@ class Shuriken :
         pass
 
     def update(self):
-        
+        if self.explosion == False :
+            position_tx = self.target.position_x
+            position_ty = self.target.position_y
+
+            if self.position_x < position_tx :
+                if self.move_x < self.max_speed :
+                    self.move_x += 1
+            elif self.position_x > position_tx :
+                if self.move_x > -self.max_speed :
+                    self.move_x -= 1
+
+            if self.position_y < position_ty :
+                if self.move_y < self.max_speed :
+                    self.move_y += 1
+            elif self.position_y > position_ty :
+                if self.move_y > -self.max_speed :
+                    self.move_y -= 1
+
+        self.position_x += self.move_x
+        self.position_y += self.move_y
+
+        return self.alive
         pass
 
     def draw(self):
