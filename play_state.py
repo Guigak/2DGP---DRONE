@@ -280,8 +280,8 @@ class Item:
 
         self.alive = True
 
-        #self.item_num = 5
-        self.item_num = self.rand_num % 6
+        self.item_num = 1
+        #self.item_num = self.rand_num % 6
         # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
 
         self.frame_x = self.item_num
@@ -518,6 +518,8 @@ class Shuriken :
                 self.explosion = True
 
                 self.radius = 75
+                self.frame_x = -1
+                self.frame_y = 0
         pass
 
 class Big_Drone :
@@ -836,6 +838,9 @@ def Chk_Eball_N_Enemy() :
     for eball in electric_balls :
         for enemy in enemies :
             eball.Chk_with_Enemy(enemy)
+    pass
+
+def Chk_Shuriken_N_Enemy() :
     pass
 
 def Chk_Game_End() :
