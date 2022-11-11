@@ -841,7 +841,9 @@ def Chk_Eball_N_Enemy() :
     pass
 
 def Chk_Shuriken_N_Enemy() :
-    pass
+    for shuriken in shurikens :
+        for enemy in enemies :
+            shuriken.Chk_with_Enemy(enemy)
 
 def Chk_Game_End() :
     if not drone.alive :
