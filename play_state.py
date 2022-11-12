@@ -31,7 +31,7 @@ class Drone :
         if Drone.image == None :
             Drone.image = load_image('drone.png')
 
-        self.radius = 50
+        self.radius_default = self.radius = 50
         self.position_x = WIDTH // 2
         self.position_y = self.radius
 
@@ -150,10 +150,11 @@ class Drone :
 
             if self.shield_time == 0 :
                 self.shield = False
+                self.radius = self.radius_default
 
     def draw(self):
-        self.image.clip_draw(self.radius * 2 * self.frame_x, self.radius * 2 * (3 - self.frame_y),\
-                            self.radius * 2, self.radius * 2,\
+        self.image.clip_draw(self.radius_default * 2 * self.frame_x, self.radius_default * 2 * (3 - self.frame_y),\
+                            self.radius_default * 2, self.radius_default * 2,\
                             self.position_x, self.position_y)
 
         self.frame_x = (self.frame_x + 1) % 2
@@ -171,6 +172,7 @@ class Drone :
 
     def Shield_on(self) :
         self.shield = True
+        self.radius = self.shield_radius
         self.shield_time = 50
         self.shield_frame_x = 0
 
