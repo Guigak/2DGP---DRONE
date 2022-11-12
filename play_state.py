@@ -360,6 +360,8 @@ class Item:
                     Add_Eboom(self.position_x, self.position_y)
                 case 1 :
                     Add_Shuriken(self.position_x, self.position_y)
+                    Add_Shuriken(self.position_x, self.position_y)
+                    Add_Shuriken(self.position_x, self.position_y)
                 case 2 :
                     drone.Shield_on()
                 case 3 :
@@ -433,14 +435,15 @@ class Shuriken :
         self.position_x = item_x
         self.position_y = item_y
 
-        self.move_x = 0
-        self.move_y = 0
+        self.move_x = random.randint(-5, 5)
+        self.move_y = random.randint(-5, 5)
 
         self.max_speed = 10
 
         self.target = enemies[random.randint(0, len(enemies) - 1)]
 
         self.explosion = False
+        self.explosion_loop = 0
 
         self.alive = True
 
@@ -486,7 +489,11 @@ class Shuriken :
                 self.frame_y += 1
                 
                 if self.frame_y >= 3 :
-                    self.alive = False
+                    if self.explosion_loop == 3 :
+                        self.alive = False
+                    else :
+                        self.frame_y = self.frame_y % 3
+                        self.explosion_loop += 1
 
         return self.alive
         pass
@@ -520,6 +527,20 @@ class Shuriken :
                 self.radius = 75
                 self.frame_x = -1
                 self.frame_y = 0
+
+        # if tum < self.radius + enemy.radius :
+        #     if self.explosion :
+        #         enemy.alive = False
+        #     else :
+        #         if self.target == enemy :
+        #             if tum < self.radius :
+        #                 self.explosion = True
+
+        #                 self.radius = 75
+        #                 self.frame_x = -1
+        #                 self.frame_y = 0
+        #         else :
+        #             enemy.alive = False
         pass
 
 class Big_Drone :
@@ -976,6 +997,7 @@ def update() :
     Chk_Bdrone_N_Enemy()
     Chk_Mdrone_N_Enemy()
     Chk_Eball_N_Enemy()
+    Chk_Shuriken_N_Enemy()
     Chk_Game_End()
     pass    
 
