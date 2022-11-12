@@ -523,12 +523,13 @@ class Shuriken :
         if tum < self.radius + enemy.radius :
             enemy.alive = False
 
-            if self.target == enemy :
-                self.explosion = True
+            if self.explosion == False :
+                if self.target == enemy :
+                    self.explosion = True
 
-                self.radius = 75
-                self.frame_x = -1
-                self.frame_y = 0
+                    self.radius = 75
+                    self.frame_x = -1
+                    self.frame_y = 0
 
         # if tum < self.radius + enemy.radius :
         #     if self.explosion :
