@@ -891,6 +891,22 @@ def handle_events():
                 drone.left = True
             if event.key == SDLK_RIGHT :
                 drone.right = True
+            # test
+            if event.key == SDLK_1 :
+                Add_Eboom(drone.position_x, drone.position_y)
+            if event.key == SDLK_2 :
+                Add_Shuriken(drone.position_x, drone.position_y)
+                Add_Shuriken(drone.position_x, drone.position_y)
+                Add_Shuriken(drone.position_x, drone.position_y)
+            if event.key == SDLK_3 :
+                drone.Shield_on()
+            if event.key == SDLK_4 :
+                Add_Bdrone(drone.position_x, drone.position_y)
+            if event.key == SDLK_5 :
+                Get_Mdrone()
+            if event.key == SDLK_6 :
+                Add_Eball(drone.position_x, drone.position_y)
+            
         elif event.type == SDL_KEYUP :
             if event.key == SDLK_UP :
                 drone.up = False
