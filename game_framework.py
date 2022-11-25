@@ -83,6 +83,8 @@ def quit():
 
 import time
 frame_time = 0.0
+tum_time = 0.0
+update_time = 0.05
 
 def run(start_state):
     global running, stack
@@ -90,17 +92,24 @@ def run(start_state):
     stack = [start_state]
     start_state.enter()
 
-    current_time = time.time()
+    current_time = 1 * time.time()
 
     while (running):
-        stack[-1].handle_events()
-        stack[-1].update()
-        stack[-1].draw()
-
-        global frame_time
-        frame_time = time.time() - current_time
+        global frame_time, tum_time
+        frame_time = 1 * (time.time() - current_time)
         current_time += frame_time
 
+        tum_time += frame_time
+
+        if (tum_time > update_time) :
+            for i in range(int(tum_time / update_time)) :
+                stack[-1].handle_events()
+                stack[-1].update()
+                
+            stack[-1].draw()
+            
+            tum_time = tum_time % update_time
+            
     # repeatedly delete the top of the stack
     while (len(stack) > 0):
         stack[-1].exit()
