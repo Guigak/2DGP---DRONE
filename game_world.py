@@ -54,18 +54,26 @@ def add_collision_pairs(a, b, group):
 
     if a:
         if type(a) is list:
-            collision_group[group][1] += a
+            collision_group[group][0] += a
         else:
-            collision_group[group][1].append(a)
+            collision_group[group][0].append(a)
 
     if b:
         if type(b) is list:
-            collision_group[group][0] += b
+            collision_group[group][1] += b
         else:
-            collision_group[group][0].append(b)
+            collision_group[group][1].append(b)
 
     print(collision_group)
 
+def add_collision(o, l, group) :
+    if group in collision_group :
+        if type(o) is list:
+            collision_group[group][l] += o
+        else:
+            collision_group[group][l].append(o)   
+        
+        print(collision_group)
 
 
 def all_collision_pairs():
