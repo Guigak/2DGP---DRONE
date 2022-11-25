@@ -154,7 +154,9 @@ class Drone :
                 print('drone dead')
                 self.alive = False
         elif group == 'drone:item' :
-            print('get item')
+            if other.item_num == 2 :
+                self.Shield_on()
+
 
     def Shield_on(self) :
         self.shield = True

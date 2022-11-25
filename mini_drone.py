@@ -1,3 +1,7 @@
+from pico2d import *
+import game_world
+import server
+
 class Mini_Drone :
     image = None
 
@@ -28,13 +32,12 @@ class Mini_Drone :
 
         self.time += 1
 
-        if (self.position_x < -self.radius) or (self.position_x > WIDTH + self.radius) :
-            self.alive = False
-
-        if (self.position_y < -self.radius) or (self.position_y > HEIGHT + self.radius) :
-            self.alive = False
-
-        return self.alive
+        if (self.position_x < -self.radius) or (self.position_x > server.WIDTH + self.radius) :
+            server.mini_drones.remove(self)
+            game_world.remove_object(self)
+        elif (self.position_y < -self.radius) or (self.position_y > server.HEIGHT + self.radius) :
+            server.mini_drones.remove(self)
+            game_world.remove_object(self)
         pass
 
     def draw(self):
@@ -46,6 +49,10 @@ class Mini_Drone :
 
         self.frame_x = (self.frame_x + 1) % 2
         pass
+
+    def handle_collision(self, other, group) :
+        if group == 'enemy:mdrone' :
+            other.alive = False
 
     def Chk_with_Enemy(self, enemy) :
         tum_x = enemy.position_x - self.position_x

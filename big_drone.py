@@ -1,3 +1,9 @@
+from pico2d import *
+import game_world
+import server
+
+from enemy import Enemy
+
 class Big_Drone :
     image = None
 
@@ -28,10 +34,9 @@ class Big_Drone :
         self.rect['y1'] = self.rect['y1'] + self.speed
         self.rect['y2'] = self.rect['y2'] + self.speed
 
-        if self.rect['y2'] > HEIGHT :
-            self.alive = False
-
-        return self.alive
+        if self.rect['y2'] > server.HEIGHT :
+            server.big_drones.remove(self)
+            game_world.remove_object(self)
         pass
 
     def draw(self):
@@ -41,6 +46,10 @@ class Big_Drone :
 
         self.frame_x = (self.frame_x + 1) % 2
         pass
+
+    def handle_collision(self, other, group) :
+        if group == 'enemy:bdrone' :
+            other.alive = False
 
     def Chk_with_Enemy(self, enemy) :
         chk1 = chk2 = False

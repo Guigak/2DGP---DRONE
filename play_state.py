@@ -12,18 +12,13 @@ from enemy import Enemy
 from item import Item
 from electric_boom import Electric_Boom
 from shuriken import Shuriken
-# from big_drone import Big_Drone
-# from mini_drone import Mini_Drone
+from big_drone import Big_Drone
+from mini_drone import Mini_Drone
 # from electric_ball import Electric_Ball
 
 # useful variable (maybe?)
 
 # function
-
-# def Get_Mdrone() :
-#     global num_create_mdrone
-
-#     num_create_mdrone += 10
 
 def Add_Enemy() :
     if len(server.enemies) < 50 :
@@ -33,6 +28,8 @@ def Add_Enemy() :
             game_world.add_collision(server.enemies[len(server.enemies) - 1], 1, 'drone:enemy')
             game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:eboom')
             game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:shuriken')
+            game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:bdrone')
+            game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:mdrone')
 
             server.time_create_enemy = 0
         else :
@@ -53,25 +50,19 @@ def Add_Item() :
         server.time_create_item -= 1
     pass
 
-# def Add_Bdrone(x, y) :
-#     global big_drones
+def Add_Mdrone() :
+    if server.num_create_mdrone != 0 :
+        if server.time_create_mdrone == 0 :
+            server.mini_drones += [Mini_Drone(server.drone.position_x, server.drone.position_y, server.drone.direct)]
+            game_world.add_object(server.mini_drones[len(server.mini_drones) - 1], 7)
+            game_world.add_collision(server.mini_drones[len(server.mini_drones) - 1], 1, 'enemy:mdrone')
 
-#     big_drones += [Big_Drone(x, y)]
-#     pass
+            server.num_create_mdrone -= 1
+            server.time_create_mdrone = 4
 
-# def Add_Mdrone() :
-#     global mini_drones, time_create_mdrone, num_create_mdrone
-
-#     if num_create_mdrone != 0 :
-#         if time_create_mdrone == 0 :
-#             mini_drones += [Mini_Drone(drone.position_x, drone.position_y, drone.direct)]
-
-#             num_create_mdrone -= 1
-#             time_create_mdrone = 4
-
-#     if time_create_mdrone != 0 :
-#         time_create_mdrone -= 1
-#     pass
+    if server.time_create_mdrone != 0 :
+        server.time_create_mdrone -= 1
+    pass
 
 # def Add_Eball(x, y) :
 #     global electric_balls
@@ -194,8 +185,10 @@ def enter() :
     
     server.shurikens = []
 
-    # big_drones = []
-    # mini_drones = []
+    server.big_drones = []
+
+    server.mini_drones = []
+
     # electric_balls = []
 
     # enemies[0].Cal_rad()
@@ -211,6 +204,8 @@ def enter() :
     game_world.add_collision_pairs(server.drone, server.items[len(server.items) - 1], 'drone:item')
     game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:eboom')
     game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:shuriken')
+    game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:bdrone')
+    game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:mdrone')
 
 # 게임 종료 - 객체를 소멸
 def exit() :
@@ -225,6 +220,22 @@ def collide_default(a, b):
     if tum < a.radius + b.radius :
         return True
 
+    return False
+
+def collide_rect(a, b) :
+    chk1 = chk2 = False
+
+    if a.position_x >= b.rect['x1']\
+        and a.position_x <= b.rect['x2'] :
+        chk1 = True
+
+    if a.position_y <= b.rect['y1']\
+        and a.position_y >= b.rect['y2'] :
+        chk2 = True
+
+    if chk1 and chk2 :
+        return True
+    
     return False
 
 def update() :
@@ -253,7 +264,7 @@ def update() :
 
     Add_Enemy()
     Add_Item()
-    # Add_Mdrone()
+    Add_Mdrone()
     # Chk_Drone_N_Enemy()
     # Chk_Drone_N_Item()
     # Chk_Eboom_N_Enemy()
@@ -264,9 +275,14 @@ def update() :
     # Chk_Game_End()
 
     for a, b, group in game_world.all_collision_pairs():
-        if collide_default(a, b):            
-            a.handle_collision(b, group)
-            b.handle_collision(a, group)
+        if group == 'enemy:bdrone' :
+            if collide_rect(a, b) :
+                a.handle_collision(b, group)
+                b.handle_collision(a, group)
+        else :
+            if collide_default(a, b):            
+                a.handle_collision(b, group)
+                b.handle_collision(a, group)
     pass    
 
 def draw_world() :
