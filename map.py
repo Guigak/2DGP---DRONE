@@ -1,3 +1,6 @@
+from pico2d import *
+import server
+
 class Map :
     image = None
 
@@ -7,8 +10,9 @@ class Map :
         self.speed = 10
         self.move_y = 0
 
-    def draw(self):
-        self.image.draw(WIDTH // 2, HEIGHT // 2 - self.move_y)
-        self.image.draw(WIDTH // 2, HEIGHT // 2 + HEIGHT - self.move_y)
+    def update(self) :
+        self.move_y = (self.move_y + self.speed) % server.HEIGHT
 
-        self.move_y = (self.move_y + self.speed) % HEIGHT
+    def draw(self):
+        self.image.draw(server.WIDTH // 2, server.HEIGHT // 2 - self.move_y)
+        self.image.draw(server.WIDTH // 2, server.HEIGHT // 2 + server.HEIGHT - self.move_y)
