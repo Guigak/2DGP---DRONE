@@ -60,6 +60,11 @@ class Enemy :
 
         self.frame_x = (self.frame_x + 1) % 2
 
+    def handle_collision(self, other, group) :
+        if group == 'drone:enemy' :
+            if other.shield :
+                self.alive = False
+
     def Cal_rad(self) :
         dx = server.drone.position_x - self.default_x
         dy = server.drone.position_y - self.default_y

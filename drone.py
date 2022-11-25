@@ -148,6 +148,14 @@ class Drone :
 
         pass
 
+    def handle_collision(self, other, group) :
+        if group == 'drone:enemy' :
+            if not self.shield :
+                print('drone dead')
+                self.alive = False
+        elif group == 'drone:item' :
+            print('get item')
+
     def Shield_on(self) :
         self.shield = True
         self.radius = self.shield_radius

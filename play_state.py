@@ -30,6 +30,7 @@ def Add_Enemy() :
         if server.time_create_enemy == len(server.enemies) :
             server.enemies += [Enemy()]
             game_world.add_object(server.enemies[len(server.enemies) - 1], 2)
+            game_world.add_collision_pairs(server.drone, server.enemies[len(server.enemies) - 1], 'drone:enemy')
 
             server.time_create_enemy = 0
         else :
@@ -42,6 +43,7 @@ def Add_Item() :
         if server.time_create_item == 0 :
             server.items += [Item()]
             game_world.add_object(server.items[len(server.items) - 1], 3)
+            game_world.add_collision_pairs(server.drone, server.items[len(server.items) - 1], 'drone:item')
 
             server.time_create_item = 100
 
@@ -198,7 +200,8 @@ def enter() :
     server.items = [Item()]
     game_world.add_object(server.items[len(server.items) - 1], 3)
 
-    # electric_booms = []
+    server.electric_booms = []
+
     # big_drones = []
     # mini_drones = []
     # electric_balls = []
@@ -212,9 +215,24 @@ def enter() :
 
     server.num_create_mdrone = 0
 
+    #
+    game_world.add_collision_pairs(server.drone, server.enemies[len(server.enemies) - 1], 'drone:enemy')
+    game_world.add_collision_pairs(server.drone, server.items[len(server.items) - 1], 'drone:item')
+
 # 게임 종료 - 객체를 소멸
 def exit() :
     game_world.clear()
+
+def collide_default(a, b):
+    tum_x = a.position_x - b.position_x
+    tum_y = a.position_y - b.position_y
+
+    tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
+
+    if tum < a.radius + b.radius :
+        return True
+
+    return False
 
 def update() :
     for game_object in game_world.all_objects():
@@ -251,6 +269,11 @@ def update() :
     # Chk_Eball_N_Enemy()
     # Chk_Shuriken_N_Enemy()
     # Chk_Game_End()
+
+    for a, b, group in game_world.all_collision_pairs():
+        if collide_default(a, b):            
+            a.handle_collision(b, group)
+            b.handle_collision(a, group)
     pass    
 
 def draw_world() :

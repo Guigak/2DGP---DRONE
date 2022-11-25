@@ -94,6 +94,10 @@ class Item:
                             self.position_x, self.position_y)
         pass
 
+    def handle_collision(self, other, group) :
+        if group == 'drone:item' :
+            pass
+
     def Chk_with_Drone(self) :
         tum_x = server.drone.position_x - self.position_x
         tum_y = server.drone.position_y - self.position_y
