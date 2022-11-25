@@ -117,6 +117,7 @@ class Item:
                 case _:
                     pass
                 
+        server.items.remove(self)
         game_world.remove_object(self)
 
     def Chk_with_Drone(self) :

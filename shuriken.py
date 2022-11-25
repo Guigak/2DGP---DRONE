@@ -72,6 +72,7 @@ class Shuriken :
                 
                 if self.frame_y >= 3 :
                     if self.explosion_loop == 3 :
+                        server.shurikens.remove(self)
                         game_world.remove_object(self)
                     else :
                         self.frame_y = self.frame_y % 3

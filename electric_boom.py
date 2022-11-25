@@ -1,5 +1,6 @@
 from pico2d import *
 import game_world
+import server
 
 class Electric_Boom:
     image = None
@@ -26,6 +27,7 @@ class Electric_Boom:
         self.frame_y = self.time // 5
 
         if self.time == 25 :
+            server.electric_booms.remove(self)
             game_world.remove_object(self)
         pass
 
