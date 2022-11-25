@@ -7,7 +7,7 @@ import server
 
 # import class
 from map import Map
-# from drone import Drone
+from drone import Drone
 # from enemy import Enemy
 # from item import Item
 # from electric_boom import Electric_Boom
@@ -138,48 +138,47 @@ from map import Map
 #     pass
 
 def handle_events():
-    pass
-    # events = get_events()
+    events = get_events()
 
-    # for event in events:
-    #     if event.type == SDL_QUIT:
-    #         game_framework.quit()
-    #     elif event.type == SDL_KEYDOWN :
-    #         if event.key == SDLK_ESCAPE:
-    #             game_framework.quit()
-    #         if event.key == SDLK_UP :
-    #             drone.up = True
-    #         if event.key == SDLK_DOWN :
-    #             drone.down = True
-    #         if event.key == SDLK_LEFT :
-    #             drone.left = True
-    #         if event.key == SDLK_RIGHT :
-    #             drone.right = True
-    #         # test
-    #         if event.key == SDLK_1 :
-    #             Add_Eboom(drone.position_x, drone.position_y)
-    #         if event.key == SDLK_2 :
-    #             Add_Shuriken(drone.position_x, drone.position_y)
-    #             Add_Shuriken(drone.position_x, drone.position_y)
-    #             Add_Shuriken(drone.position_x, drone.position_y)
-    #         if event.key == SDLK_3 :
-    #             drone.Shield_on()
-    #         if event.key == SDLK_4 :
-    #             Add_Bdrone(drone.position_x, drone.position_y)
-    #         if event.key == SDLK_5 :
-    #             Get_Mdrone()
-    #         if event.key == SDLK_6 :
-    #             Add_Eball(drone.position_x, drone.position_y)
+    for event in events:
+        if event.type == SDL_QUIT:
+            game_framework.quit()
+        elif event.type == SDL_KEYDOWN :
+            if event.key == SDLK_ESCAPE:
+                game_framework.quit()
+            if event.key == SDLK_UP :
+                server.drone.up = True
+            if event.key == SDLK_DOWN :
+                server.drone.down = True
+            if event.key == SDLK_LEFT :
+                server.drone.left = True
+            if event.key == SDLK_RIGHT :
+                server.drone.right = True
+            # test
+            # if event.key == SDLK_1 :
+            #     Add_Eboom(server.drone.position_x, server.drone.position_y)
+            # if event.key == SDLK_2 :
+            #     Add_Shuriken(server.drone.position_x, server.drone.position_y)
+            #     Add_Shuriken(server.drone.position_x, server.drone.position_y)
+            #     Add_Shuriken(server.drone.position_x, server.drone.position_y)
+            # if event.key == SDLK_3 :
+            #     server.drone.Shield_on()
+            # if event.key == SDLK_4 :
+            #     Add_Bserver.drone(server.drone.position_x, server.drone.position_y)
+            # if event.key == SDLK_5 :
+            #     Get_Mserver.drone()
+            # if event.key == SDLK_6 :
+            #     Add_Eball(server.drone.position_x, server.drone.position_y)
             
-    #     elif event.type == SDL_KEYUP :
-    #         if event.key == SDLK_UP :
-    #             drone.up = False
-    #         if event.key == SDLK_DOWN :
-    #             drone.down = False
-    #         if event.key == SDLK_LEFT :
-    #             drone.left = False
-    #         if event.key == SDLK_RIGHT :
-    #             drone.right = False
+        elif event.type == SDL_KEYUP :
+            if event.key == SDLK_UP :
+                server.drone.up = False
+            if event.key == SDLK_DOWN :
+                server.drone.down = False
+            if event.key == SDLK_LEFT :
+                server.drone.left = False
+            if event.key == SDLK_RIGHT :
+                server.drone.right = False
 
 
 # 게임 초기화 : 객체들을 생성
@@ -187,10 +186,15 @@ def handle_events():
 # data
 
 def enter() :
+    server.HEIGHT = get_canvas_height()
+    server.WIDTH = get_canvas_width()
+    
     server.map = Map()
     game_world.add_object(server.map, 0)
 
-    # drone = Drone()
+    server.drone = Drone()
+    game_world.add_object(server.drone, 1)
+
     # enemies = [Enemy()]
     # items = [Item()]
     # electric_booms = []
@@ -206,9 +210,6 @@ def enter() :
     server.time_create_mdrone = 0
 
     server.num_create_mdrone = 0
-
-    server.HEIGHT = get_canvas_height()
-    server.WIDTH = get_canvas_width()
 
 # 게임 종료 - 객체를 소멸
 def exit() :

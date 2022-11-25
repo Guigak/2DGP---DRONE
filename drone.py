@@ -1,3 +1,6 @@
+from pico2d import *
+import server
+
 class Drone :
     image = None
     shield_image = None
@@ -7,7 +10,7 @@ class Drone :
             Drone.image = load_image('drone.png')
 
         self.radius_default = self.radius = 50
-        self.position_x = WIDTH // 2
+        self.position_x = server.WIDTH // 2
         self.position_y = self.radius
 
         self.speed = 10
@@ -41,7 +44,7 @@ class Drone :
         # about moving
     
         if self.up :
-            if self.position_y < HEIGHT - self.radius :
+            if self.position_y < server.HEIGHT - self.radius :
                 self.position_y += self.speed
 
             self.frame_y = 0
@@ -65,7 +68,7 @@ class Drone :
             self.direct = 4
                 
         if self.right :
-            if self.position_x < WIDTH - self.radius :
+            if self.position_x < server.WIDTH - self.radius :
                 self.position_x += self.speed
                 
             self.frame_y = 1
