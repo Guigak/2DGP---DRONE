@@ -1,5 +1,8 @@
 from pico2d import *
+import game_world
 import server
+
+from electric_boom import Electric_Boom
 
 import random
 
@@ -29,8 +32,8 @@ class Item:
 
         self.alive = True
 
-        # self.item_num = 1
-        self.item_num = self.rand_num % 6
+        self.item_num = 0
+        # self.item_num = self.rand_num % 6
         # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
 
         self.frame_x = self.item_num
@@ -96,7 +99,25 @@ class Item:
 
     def handle_collision(self, other, group) :
         if group == 'drone:item' :
-            pass
+            match self.item_num :
+                case 0 :
+                    Add_Eboom(self.position_x, self.position_y)
+                # case 1 :
+                #     Add_Shuriken(self.position_x, self.position_y)
+                #     Add_Shuriken(self.position_x, self.position_y)
+                #     Add_Shuriken(self.position_x, self.position_y)
+                # case 2 :
+                #     drone.Shield_on()
+                # case 3 :
+                #     Add_Bdrone(self.position_x, self.position_y)
+                # case 4 :
+                #     Get_Mdrone()
+                # case 5 :
+                #     Add_Eball(self.position_x, self.position_y)
+                case _:
+                    pass
+                
+        game_world.remove_object(self)
 
     def Chk_with_Drone(self) :
         tum_x = server.drone.position_x - self.position_x
@@ -127,4 +148,10 @@ class Item:
                     pass
         
         return self.alive
-        pass
+        pass    
+
+def Add_Eboom(x, y) :
+    server.electric_booms += [Electric_Boom(x, y)]
+    game_world.add_object(server.electric_booms[len(server.electric_booms) - 1], 4)
+    game_world.add_collision(server.electric_booms[len(server.electric_booms) - 1], 1, 'enemy:eboom')
+    pass

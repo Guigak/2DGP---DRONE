@@ -43,6 +43,7 @@ class Enemy :
         if self.position_y < -self.radius :
             self.alive = False
 
+        #
         if not self.alive :
             self.default_x = random.randint(0, server.WIDTH)
             self.reverse = False

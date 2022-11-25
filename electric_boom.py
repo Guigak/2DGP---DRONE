@@ -1,3 +1,6 @@
+from pico2d import *
+import game_world
+
 class Electric_Boom:
     image = None
 
@@ -23,9 +26,7 @@ class Electric_Boom:
         self.frame_y = self.time // 5
 
         if self.time == 25 :
-            self.alive = False
-
-        return self.alive
+            game_world.remove_object(self)
         pass
 
     def draw(self):
@@ -33,6 +34,10 @@ class Electric_Boom:
                             self.radius * 2, self.radius * 2,\
                             self.position_x, self.position_y)
         pass
+
+    def handle_collision(self, other, group) :
+        if group == 'enemy:eboom' :
+            other.alive = False
 
     def Chk_with_Enemy(self, enemy) :
         tum_x = enemy.position_x - self.position_x
