@@ -9,7 +9,7 @@ import server
 from map import Map
 from drone import Drone
 from enemy import Enemy
-# from item import Item
+from item import Item
 # from electric_boom import Electric_Boom
 # from shuriken import Shuriken
 # from big_drone import Big_Drone
@@ -37,18 +37,17 @@ def Add_Enemy() :
 
     pass
 
-# def Add_Item() :
-#     global items, time_create_item
+def Add_Item() :
+    if len(server.items) < 3 :
+        if server.time_create_item == 0 :
+            server.items += [Item()]
+            game_world.add_object(server.items[len(server.items) - 1], 3)
 
-#     if len(items) < 3 :
-#         if time_create_item == 0 :
-#             items += [Item()]
+            server.time_create_item = 100
 
-#             time_create_item = 100
-
-#     if time_create_item != 0 :
-#         time_create_item -= 1
-#     pass
+    if server.time_create_item != 0 :
+        server.time_create_item -= 1
+    pass
 
 # def Add_Eboom(x, y) :
 #     global electric_booms
@@ -196,7 +195,9 @@ def enter() :
     server.enemies = [Enemy()]
     game_world.add_object(server.enemies[len(server.enemies) - 1], 2)
 
-    # items = [Item()]
+    server.items = [Item()]
+    game_world.add_object(server.items[len(server.items) - 1], 3)
+
     # electric_booms = []
     # big_drones = []
     # mini_drones = []
@@ -240,7 +241,7 @@ def update() :
     #         shurikens.remove(shuriken)
 
     Add_Enemy()
-    # Add_Item()
+    Add_Item()
     # Add_Mdrone()
     # Chk_Drone_N_Enemy()
     # Chk_Drone_N_Item()

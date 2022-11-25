@@ -1,3 +1,8 @@
+from pico2d import *
+import server
+
+import random
+
 class Item:
     image = None
 
@@ -5,8 +10,8 @@ class Item:
         if Item.image == None :
             Item.image = load_image('item_icons.png')
         self.radius = 25
-        self.default_x = self.position_x = random.randint(0, WIDTH)
-        self.default_y = self.position_y = HEIGHT + self.radius
+        self.default_x = self.position_x = random.randint(0, server.WIDTH)
+        self.default_y = self.position_y = server.HEIGHT + self.radius
 
         self.rand_num = random.randint(0, 24)
 
@@ -50,8 +55,8 @@ class Item:
             self.time = 0
             self.bounce = True
                 
-        if self.position_x >= WIDTH - self.radius :
-            self.default_x = WIDTH - self.radius
+        if self.position_x >= server.WIDTH - self.radius :
+            self.default_x = server.WIDTH - self.radius
             self.default_y = self.position_y
 
             if self.rad < 0 :
@@ -72,8 +77,8 @@ class Item:
             self.bounce = True
                     
         if self.bounce :
-            if self.position_y >= HEIGHT - self.radius :
-                self.default_y = HEIGHT - self.radius
+            if self.position_y >= server.HEIGHT - self.radius :
+                self.default_y = server.HEIGHT - self.radius
                 self.default_x = self.position_x
 
                 self.rad = -self.rad
@@ -90,30 +95,30 @@ class Item:
         pass
 
     def Chk_with_Drone(self) :
-        tum_x = drone.position_x - self.position_x
-        tum_y = drone.position_y - self.position_y
+        tum_x = server.drone.position_x - self.position_x
+        tum_y = server.drone.position_y - self.position_y
 
         tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
 
-        if tum < self.radius + drone.radius :
+        if tum < self.radius + server.drone.radius :
             self.alive = False
 
         if self.alive == False :
             match self.item_num :
-                case 0 :
-                    Add_Eboom(self.position_x, self.position_y)
-                case 1 :
-                    Add_Shuriken(self.position_x, self.position_y)
-                    Add_Shuriken(self.position_x, self.position_y)
-                    Add_Shuriken(self.position_x, self.position_y)
-                case 2 :
-                    drone.Shield_on()
-                case 3 :
-                    Add_Bdrone(self.position_x, self.position_y)
-                case 4 :
-                    Get_Mdrone()
-                case 5 :
-                    Add_Eball(self.position_x, self.position_y)
+                # case 0 :
+                #     Add_Eboom(self.position_x, self.position_y)
+                # case 1 :
+                #     Add_Shuriken(self.position_x, self.position_y)
+                #     Add_Shuriken(self.position_x, self.position_y)
+                #     Add_Shuriken(self.position_x, self.position_y)
+                # case 2 :
+                #     drone.Shield_on()
+                # case 3 :
+                #     Add_Bdrone(self.position_x, self.position_y)
+                # case 4 :
+                #     Get_Mdrone()
+                # case 5 :
+                #     Add_Eball(self.position_x, self.position_y)
                 case _:
                     pass
         
