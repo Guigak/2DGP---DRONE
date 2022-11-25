@@ -5,6 +5,7 @@ import server
 from electric_boom import Electric_Boom
 from shuriken import Shuriken
 from big_drone import Big_Drone
+from electric_ball import Electric_Ball
 
 import random
 
@@ -34,8 +35,8 @@ class Item:
 
         self.alive = True
 
-        self.item_num = 4
-        # self.item_num = self.rand_num % 2
+        # self.item_num = 5
+        self.item_num = self.rand_num % 6
         # 0 : E_Boom, 1 : Shuriken, 2 : E_Shield, 3 : Big, 4 : Mini, 5 : E_Ball
 
         self.frame_x = self.item_num
@@ -113,8 +114,8 @@ class Item:
                     Add_Bdrone(self.position_x, self.position_y)
                 case 4 :
                     Get_Mdrone()
-                # case 5 :
-                #     Add_Eball(self.position_x, self.position_y)
+                case 5 :
+                    Add_Eball(self.position_x, self.position_y)
                 case _:
                     pass
                 
@@ -172,3 +173,9 @@ def Add_Bdrone(x, y) :
 
 def Get_Mdrone() :
     server.num_create_mdrone += 10
+
+def Add_Eball(x, y) :
+    server.electric_balls += [Electric_Ball(x, y, server.drone.direct)]
+    game_world.add_object(server.electric_balls[len(server.electric_balls) - 1], 7)
+    game_world.add_collision(server.electric_balls[len(server.electric_balls) - 1], 1, 'enemy:eball')
+    pass

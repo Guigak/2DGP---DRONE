@@ -1,3 +1,7 @@
+from pico2d import *
+import game_world
+import server
+
 class Electric_Ball :
     image = None
 
@@ -38,8 +42,8 @@ class Electric_Ball :
 
             self.time = 0
                 
-        if self.position_x >= WIDTH - self.radius :
-            self.default_x = WIDTH - self.radius
+        if self.position_x >= server.WIDTH - self.radius :
+            self.default_x = server.WIDTH - self.radius
             self.default_y = self.position_y
 
             if self.rad < 0 :
@@ -57,8 +61,8 @@ class Electric_Ball :
 
             self.time = 0
 
-        if self.position_y >= HEIGHT - self.radius :
-            self.default_y = HEIGHT - self.radius
+        if self.position_y >= server.HEIGHT - self.radius :
+            self.default_y = server.HEIGHT - self.radius
             self.default_x = self.position_x
 
             self.rad = -self.rad
@@ -66,9 +70,8 @@ class Electric_Ball :
             self.time = 0
 
         if self.time_alive == 100 :
-            self.alive = False
-
-        return self.alive
+            server.electric_balls.remove(self)
+            game_world.remove_object(self)
         pass
 
     def draw(self):
@@ -78,6 +81,10 @@ class Electric_Ball :
 
         self.frame_x = (self.frame_x + 1) % 4
         pass
+
+    def handle_collision(self, other, group) :
+        if group == 'enemy:eball' :
+            other.alive = False
 
     def Chk_with_Enemy(self, enemy) :
         tum_x = enemy.position_x - self.position_x

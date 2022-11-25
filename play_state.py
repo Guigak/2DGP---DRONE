@@ -30,6 +30,7 @@ def Add_Enemy() :
             game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:shuriken')
             game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:bdrone')
             game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:mdrone')
+            game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:eball')
 
             server.time_create_enemy = 0
         else :
@@ -63,12 +64,6 @@ def Add_Mdrone() :
     if server.time_create_mdrone != 0 :
         server.time_create_mdrone -= 1
     pass
-
-# def Add_Eball(x, y) :
-#     global electric_balls
-
-#     electric_balls += [Electric_Ball(x, y, drone.direct)]
-#     pass
 
 # def Chk_Drone_N_Enemy() :
 #     for enemy in enemies :
@@ -189,7 +184,7 @@ def enter() :
 
     server.mini_drones = []
 
-    # electric_balls = []
+    server.electric_balls = []
 
     # enemies[0].Cal_rad()
 
@@ -206,6 +201,7 @@ def enter() :
     game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:shuriken')
     game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:bdrone')
     game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:mdrone')
+    game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:eball')
 
 # 게임 종료 - 객체를 소멸
 def exit() :
