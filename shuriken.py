@@ -1,3 +1,9 @@
+from pico2d import *
+import game_world
+import server
+
+import random
+
 class Shuriken :
     image_d = None
     image_e = None
@@ -16,7 +22,7 @@ class Shuriken :
 
         self.max_speed = 10
 
-        self.target = enemies[random.randint(0, len(enemies) - 1)]
+        self.target = server.enemies[random.randint(0, len(server.enemies) - 1)]
 
         self.explosion = False
         self.explosion_loop = 0
@@ -66,12 +72,10 @@ class Shuriken :
                 
                 if self.frame_y >= 3 :
                     if self.explosion_loop == 3 :
-                        self.alive = False
+                        game_world.remove_object(self)
                     else :
                         self.frame_y = self.frame_y % 3
                         self.explosion_loop += 1
-
-        return self.alive
         pass
 
     def draw(self):
@@ -85,8 +89,20 @@ class Shuriken :
                                 self.position_x, self.position_y)
         pass
 
+    def handle_collision(self, other, group) :
+        if group == 'enemy:shuriken' :
+            other.alive = False
+
+            if self.explosion == False :
+                if self.target == other :
+                    self.explosion = True
+
+                    self.radius = 75
+                    self.frame_x = -1
+                    self.frame_y = 0
+
     def targeting(self) :
-        self.target = enemies[random.randint(0, len(enemies) - 1)]
+        self.target = server.enemies[random.randint(0, len(server.enemies) - 1)]
 
     def Chk_with_Enemy(self, enemy) :
         tum_x = enemy.position_x - self.position_x

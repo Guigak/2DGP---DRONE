@@ -11,7 +11,7 @@ from drone import Drone
 from enemy import Enemy
 from item import Item
 from electric_boom import Electric_Boom
-# from shuriken import Shuriken
+from shuriken import Shuriken
 # from big_drone import Big_Drone
 # from mini_drone import Mini_Drone
 # from electric_ball import Electric_Ball
@@ -32,6 +32,7 @@ def Add_Enemy() :
             game_world.add_object(server.enemies[len(server.enemies) - 1], 2)
             game_world.add_collision(server.enemies[len(server.enemies) - 1], 1, 'drone:enemy')
             game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:eboom')
+            game_world.add_collision(server.enemies[len(server.enemies) - 1], 0, 'enemy:shuriken')
 
             server.time_create_enemy = 0
         else :
@@ -76,12 +77,6 @@ def Add_Item() :
 #     global electric_balls
 
 #     electric_balls += [Electric_Ball(x, y, drone.direct)]
-#     pass
-
-# def Add_Shuriken(x, y) :
-#     global shurikens
-
-#     shurikens += [Shuriken(x, y)]
 #     pass
 
 # def Chk_Drone_N_Enemy() :
@@ -196,11 +191,12 @@ def enter() :
     game_world.add_object(server.items[len(server.items) - 1], 3)
 
     server.electric_booms = []
+    
+    server.shurikens = []
 
     # big_drones = []
     # mini_drones = []
     # electric_balls = []
-    # shurikens = []
 
     # enemies[0].Cal_rad()
 
@@ -214,6 +210,7 @@ def enter() :
     game_world.add_collision_pairs(server.drone, server.enemies[len(server.enemies) - 1], 'drone:enemy')
     game_world.add_collision_pairs(server.drone, server.items[len(server.items) - 1], 'drone:item')
     game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:eboom')
+    game_world.add_collision_pairs(server.enemies[len(server.enemies) - 1], None, 'enemy:shuriken')
 
 # 게임 종료 - 객체를 소멸
 def exit() :
