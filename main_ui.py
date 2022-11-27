@@ -41,6 +41,7 @@ class Main_Ui :
             if event.key == SDLK_RETURN :
                 match self.num_selected :
                     case 0:
+                        server.map_y = server.map.move_y
                         game_framework.change_state(play_state)
                     case 1:
                         game_framework.quit()

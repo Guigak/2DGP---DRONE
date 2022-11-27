@@ -17,3 +17,5 @@ num_create_mdrone = None
 
 HEIGHT = None
 WIDTH = None
+
+map_y = None

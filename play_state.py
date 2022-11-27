@@ -165,6 +165,7 @@ def enter() :
     server.WIDTH = get_canvas_width()
 
     server.map = Map()
+    server.map.move_y = server.map_y
     game_world.add_object(server.map, 0)
 
     server.drone = Drone()
