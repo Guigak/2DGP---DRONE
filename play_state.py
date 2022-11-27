@@ -10,9 +10,9 @@ from map import Map
 from drone import Drone
 from enemy import Enemy
 from item import Item
-from electric_boom import Electric_Boom
-from shuriken import Shuriken
-from big_drone import Big_Drone
+# from electric_boom import Electric_Boom
+# from shuriken import Shuriken
+# from big_drone import Big_Drone
 from mini_drone import Mini_Drone
 # from electric_ball import Electric_Ball
 

@@ -1,6 +1,5 @@
-
-
 map = None
+main_ui = None
 drone = None
 enemies = None
 items = None
