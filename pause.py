@@ -47,7 +47,6 @@ class Pause :
                 match self.num_selected :
                     case 0:
                         server.drone.reset_flag()
-                        server.map_y = server.map.move_y
                         game_framework.pop_state()
                     case 1:
                         game_framework.pop_state()

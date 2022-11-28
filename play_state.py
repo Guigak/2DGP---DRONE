@@ -5,6 +5,7 @@ import game_world
 import server
 
 import pause_state
+import gameover_state
 
 # import class
 from map import Map
@@ -108,11 +109,11 @@ def Add_Mdrone() :
 #         for enemy in enemies :
 #             shuriken.Chk_with_Enemy(enemy)
 
-# def Chk_Game_End() :
-#     if not drone.alive :
-#         #game_framework.quit()   # 임시
-#         pass
-#     pass
+def Chk_Game_End() :
+    if not server.drone.alive :
+        game_framework.push_state(gameover_state)
+        pass
+    pass
 
 def handle_events():
     events = get_events()
@@ -273,7 +274,7 @@ def update() :
     # Chk_Mdrone_N_Enemy()
     # Chk_Eball_N_Enemy()
     # Chk_Shuriken_N_Enemy()
-    # Chk_Game_End()
+    Chk_Game_End()
 
     for a, b, group in game_world.all_collision_pairs():
         if group == 'enemy:bdrone' :
