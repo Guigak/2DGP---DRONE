@@ -9,15 +9,6 @@ import server
 from map import Map
 from main_ui import Main_Ui
 
-from drone import Drone
-from enemy import Enemy
-from item import Item
-from electric_boom import Electric_Boom
-from shuriken import Shuriken
-from big_drone import Big_Drone
-from mini_drone import Mini_Drone
-# from electric_ball import Electric_Ball
-
 # useful variable (maybe?)
 
 # function
@@ -51,9 +42,8 @@ def enter() :
 
 # 게임 종료 - 객체를 소멸
 def exit() :
-    server.map = None
-    server.main_ui = None
     game_world.clear()
+    server.all_clear()
 
 def update() :
     for game_object in game_world.all_objects():

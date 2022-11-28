@@ -26,6 +26,8 @@ class Electric_Ball :
         pass
 
     def update(self):
+        self.frame_x = (self.frame_x + 1) % 4
+        
         self.time += 1
         self.time_alive += 1
         self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
@@ -78,8 +80,6 @@ class Electric_Ball :
         self.image.clip_draw(self.radius * 2 * self.frame_x, self.frame_y,\
                             self.radius * 2, self.radius * 2,\
                             self.position_x, self.position_y)
-
-        self.frame_x = (self.frame_x + 1) % 4
         pass
 
     def handle_collision(self, other, group) :

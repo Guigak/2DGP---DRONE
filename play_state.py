@@ -1,9 +1,10 @@
 # import
 from pico2d import *
-import random
 import game_framework
 import game_world
 import server
+
+import pause_state
 
 # import class
 from map import Map
@@ -120,7 +121,7 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN :
             if event.key == SDLK_ESCAPE:
-                game_framework.quit()
+                game_framework.push_state(pause_state)
             if event.key == SDLK_UP :
                 server.drone.up = True
             if event.key == SDLK_DOWN :
@@ -207,6 +208,7 @@ def enter() :
 # 게임 종료 - 객체를 소멸
 def exit() :
     game_world.clear()
+    server.all_clear()
 
 def collide_default(a, b):
     tum_x = a.position_x - b.position_x
@@ -301,6 +303,7 @@ def test_self() :
     import sys
     this_module = sys.modules['__main__']
     pico2d.open_canvas(700, 900)
+    server.map_y = 0
     game_framework.run(this_module)
     pico2d.close_canvas
 

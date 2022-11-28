@@ -29,6 +29,8 @@ class Big_Drone :
         pass
 
     def update(self):
+        self.frame_x = (self.frame_x + 1) % 2
+        
         self.position_y = self.position_y + self.speed
 
         self.rect['y1'] = self.rect['y1'] + self.speed
@@ -43,8 +45,6 @@ class Big_Drone :
         self.image.clip_draw(self.width * self.frame_x, self.frame_y,\
                             self.width, self.height,\
                             self.position_x, self.position_y)
-
-        self.frame_x = (self.frame_x + 1) % 2
         pass
 
     def handle_collision(self, other, group) :

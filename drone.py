@@ -41,6 +41,8 @@ class Drone :
         self.shield_frame_y = 0
 
     def update(self):
+        self.frame_x = (self.frame_x + 1) % 2
+        
         # about moving
     
         if self.up :
@@ -134,8 +136,6 @@ class Drone :
         self.image.clip_draw(self.radius_default * 2 * self.frame_x, self.radius_default * 2 * (3 - self.frame_y),\
                             self.radius_default * 2, self.radius_default * 2,\
                             self.position_x, self.position_y)
-
-        self.frame_x = (self.frame_x + 1) % 2
 
         # shield
         

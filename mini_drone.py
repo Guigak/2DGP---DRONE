@@ -27,6 +27,8 @@ class Mini_Drone :
         pass
 
     def update(self):
+        self.frame_x = (self.frame_x + 1) % 2
+        
         self.position_x = self.default_x + self.speed * self.time * math.cos(self.rad)
         self.position_y = self.default_y + self.speed * self.time * math.sin(self.rad)
 
@@ -46,8 +48,6 @@ class Mini_Drone :
                                         self.rad - 90 * math.pi / 180, 'n',\
                                         self.position_x, self.position_y,\
                                         self.radius * 2, self.radius * 2)
-
-        self.frame_x = (self.frame_x + 1) % 2
         pass
 
     def handle_collision(self, other, group) :

@@ -28,6 +28,8 @@ class Enemy :
         self.Cal_rad()
 
     def update(self):
+        self.frame_x = (self.frame_x + 1) % 2
+        
         if self.reverse :
             self.position_x = self.default_x - self.speed * self.time * math.cos(self.rad)
             self.position_y = self.default_y - self.speed * self.time * math.sin(self.rad)
@@ -58,8 +60,6 @@ class Enemy :
                                         self.rad, 'n',\
                                         self.position_x, self.position_y,\
                                         self.radius * 2, self.radius * 2)
-
-        self.frame_x = (self.frame_x + 1) % 2
 
     def handle_collision(self, other, group) :
         if group == 'drone:enemy' :
