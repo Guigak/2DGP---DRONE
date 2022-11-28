@@ -9,6 +9,8 @@ mini_drones = None
 electric_balls = None
 shurikens = None
 
+score = None
+
 pause = None
 
 time_create_enemy = None
@@ -22,11 +24,13 @@ WIDTH = None
 
 map_y = None
 
-objects = [map, main_ui, drone, enemies, items, electric_booms, big_drones, mini_drones, electric_balls, shurikens, pause]
+
+
+objects = [map, main_ui, drone, enemies, items, electric_booms, big_drones, mini_drones, electric_balls, shurikens, pause, score]
 
 def all_clear() :
     global map, main_ui, drone, enemies, items, electric_booms, big_drones, mini_drones, electric_balls, shurikens,\
-        pause, time_create_enemy, time_create_item, time_create_mdrone, num_create_mdrone
+        pause, score, time_create_enemy, time_create_item, time_create_mdrone, num_create_mdrone
 
     for i in range(len(objects)) :
         remove_object(objects[i])
@@ -41,6 +45,8 @@ def all_clear() :
     mini_drones = None
     electric_balls = None
     shurikens = None
+
+    score = None
 
     pause = None
 

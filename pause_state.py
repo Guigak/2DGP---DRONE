@@ -26,7 +26,7 @@ def handle_events():
 
 def enter() :
     server.pause = Pause()
-    game_world.add_object(server.pause, 9)
+    game_world.add_object(server.pause, 10)
 
 
 # 게임 종료 - 객체를 소멸

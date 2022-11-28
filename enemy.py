@@ -65,6 +65,8 @@ class Enemy :
         if group == 'drone:enemy' :
             if other.shield :
                 self.alive = False
+        else :
+            server.score.add_score()
 
     def Cal_rad(self) :
         dx = server.drone.position_x - self.default_x

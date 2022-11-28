@@ -16,6 +16,7 @@ from item import Item
 # from big_drone import Big_Drone
 from mini_drone import Mini_Drone
 # from electric_ball import Electric_Ball
+from score import Score
 
 # useful variable (maybe?)
 
@@ -188,7 +189,8 @@ def enter() :
 
     server.electric_balls = []
 
-    # enemies[0].Cal_rad()
+    server.score = Score()
+    game_world.add_object(server.score, 9)
 
     server.time_create_enemy = 0
     server.time_create_item = 100

@@ -1,6 +1,6 @@
 
-# 0 - map / 1 - enemy / 2 - drone / 3 - item / 4 - e_boom / 5 - shuriken / 6 - b_drone / 7 - m_drone / 8 - e_ball / 9 - pause
-objects = [[], [], [], [], [], [], [], [], [], []]
+# 0 - map / 1 - enemy / 2 - drone / 3 - item / 4 - e_boom / 5 - shuriken / 6 - b_drone / 7 - m_drone / 8 - e_ball / 9 - ui / 10 - pause
+objects = [[], [], [], [], [], [], [], [], [], [], []]
 collision_group = dict()
 
 def add_object(o, depth):
