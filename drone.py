@@ -163,3 +163,9 @@ class Drone :
         self.radius = self.shield_radius
         self.shield_time = 50
         self.shield_frame_x = 0
+
+    def reset_flag(self) :
+        self.up = False
+        self.down = False
+        self.left = False
+        self.right = False

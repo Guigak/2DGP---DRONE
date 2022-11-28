@@ -20,10 +20,7 @@ def handle_events():
         if event.type == SDL_QUIT:
             game_framework.quit()
         elif event.type == SDL_KEYDOWN :
-            if event.key == SDLK_ESCAPE:
-                game_framework.quit()
-            else :
-                server.main_ui.handle_event(event)
+            server.main_ui.handle_event(event)
 
 # 게임 초기화 : 객체들을 생성
 

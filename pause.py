@@ -32,6 +32,10 @@ class Pause :
 
     def handle_event(self, event):
         if event.type == SDL_KEYDOWN :
+            if event.key == SDLK_ESCAPE :
+                    server.drone.reset_flag()
+                    server.map_y = server.map.move_y
+                    game_framework.pop_state()
             if event.key == SDLK_UP:
                 self.num_selected -= 1
 
@@ -42,6 +46,7 @@ class Pause :
             if event.key == SDLK_RETURN :
                 match self.num_selected :
                     case 0:
+                        server.drone.reset_flag()
                         server.map_y = server.map.move_y
                         game_framework.pop_state()
                     case 1:
