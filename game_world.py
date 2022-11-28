@@ -1,6 +1,6 @@
 
-# 0 - map / 1 - enemy / 2 - drone / 3 - item / 4 - e_boom / 5 - shuriken / 6 - b_drone / 7 - m_drone / 8 - e_ball
-objects = [[], [], [], [], [], [], [], [], []]
+# 0 - map / 1 - enemy / 2 - drone / 3 - item / 4 - e_boom / 5 - shuriken / 6 - b_drone / 7 - m_drone / 8 - e_ball / 9 - pause
+objects = [[], [], [], [], [], [], [], [], [], []]
 collision_group = dict()
 
 def add_object(o, depth):
@@ -8,15 +8,6 @@ def add_object(o, depth):
 
 def add_objects(ol, depth):
     objects[depth] += ol
-
-def remove_object(o):
-    for layer in objects:
-        if o in layer:
-            layer.remove(o)
-            del o
-            return
-    raise ValueError('Trying destroy non existing object')
-
 
 def remove_object(o):
     for layer in objects:
@@ -37,10 +28,12 @@ def all_objects():
 
 
 def clear():
-    for o in all_objects():
-        del o
-    for layer in objects:
-        layer.clear()
+    target_objects = objects
+
+    for target_layer in target_objects:
+        if target_layer :
+            for i in range(len(target_layer)) :
+                remove_object(target_layer[0])
 
 
 
