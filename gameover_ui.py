@@ -11,7 +11,7 @@ class Gameover_Ui :
 
     def __init__(self):
         if Gameover_Ui.image == None :
-            Gameover_Ui.image = load_image('gameover.png')
+            Gameover_Ui.image = load_image('gameover_r.png')
         if Gameover_Ui.font == None :
             Gameover_Ui.font = load_font('H2HDRM.TTF', 50)
 
@@ -21,9 +21,13 @@ class Gameover_Ui :
         pass
 
     def draw(self):
-        self.image.draw(server.WIDTH // 2, server.HEIGHT // 2)
-
         server.map.draw_gameover()
+        server.drone.draw_gameover()
+
+        for enemy in server.enemies :
+            enemy.draw_gameover()
+        
+        self.image.draw(server.WIDTH // 2, server.HEIGHT // 2)
         
         self.font.draw(150, 400, 'SCORE : %d' % server.score.num_score, (257, 257, 257))
 
