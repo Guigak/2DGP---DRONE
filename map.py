@@ -18,9 +18,30 @@ class Map :
         self.image.draw(server.WIDTH // 2, server.HEIGHT // 2 + server.HEIGHT - self.move_y)
 
     def draw_gameover(self) :   # todo
-        sx = server.drone.position_x - 200
-        sy = server.drone.position_y - 150 - self.move_y
+        y_is_out = False
 
-        self.image.clip_draw_to_origin(server.drone.position_x - 200, server.drone.position_y - 150 - self.move_y,\
-                                        400, 300,\
-                                        150, 500)
+        sx = server.drone.position_x - 200
+        sy = server.drone.position_y - 150 + self.move_y
+
+        dx = 400
+        dy = 300
+
+        sx = clamp(0, sx, server.WIDTH - 400)
+        
+        if sy > server.HEIGHT :
+            sy -= server.HEIGHT
+
+        if sy + 150 > server.HEIGHT :
+            y_is_out = True
+            dy = server.HEIGHT - (sy - 300)
+
+        if sy < 0 :
+            y_is_out = True
+            sy += server.HEIGHT
+            dy = server.HEIGHT - (sy - 300)
+
+
+        self.image.clip_draw_to_origin(sx, sy, dx, dy, 150, 500)
+
+        if y_is_out :
+            self.image.clip_draw_to_origin(sx, 0, 400, 300 - dy, 150, 500 + dy)
