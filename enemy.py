@@ -65,6 +65,7 @@ class Enemy :
         if group == 'drone:enemy' :
             if other.shield :
                 self.alive = False
+                server.score.add_score()
         else :
             server.score.add_score()
 
