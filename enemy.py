@@ -80,6 +80,29 @@ class Enemy :
         else :
             self.rad = math.atan(dy / dx)
 
+    def draw_gameover(self) :
+        sxm = server.drone.position_x   # screen x middle
+        sym = server.drone.position_y
+
+        if sxm < 200 :
+            sxm = 200
+        elif sxm > 500 :
+            sxm = 500
+
+        if sxm - 200 < self.position_x < sxm + 200\
+            and sym - 150 < self.position_y < sym + 150 :
+            sx = 350 + (self.position_x - sxm)
+            sy = 650 + (self.position_y - sym)
+
+            self.image.clip_composite_draw(self.radius * 2 * self.frame_x, self.frame_y,\
+                                        self.radius * 2, self.radius * 2,\
+                                        self.rad, 'n',\
+                                        sx, sy,\
+                                        self.radius * 2, self.radius * 2)
+        
+        
+        
+
     def Chk_with_Drone(self) :
         tum_x = server.drone.position_x - self.position_x
         tum_y = server.drone.position_y - self.position_y
