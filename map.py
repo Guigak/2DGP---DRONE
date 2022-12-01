@@ -31,14 +31,14 @@ class Map :
         if sy > server.HEIGHT :
             sy -= server.HEIGHT
 
-        if sy + 150 > server.HEIGHT :
+        if sy + 300 > server.HEIGHT :
             y_is_out = True
-            dy = server.HEIGHT - (sy - 300)
+            dy = server.HEIGHT - sy
 
         if sy < 0 :
             y_is_out = True
             sy += server.HEIGHT
-            dy = server.HEIGHT - (sy - 300)
+            dy = server.HEIGHT - sy
 
 
         self.image.clip_draw_to_origin(sx, sy, dx, dy, 150, 500)
