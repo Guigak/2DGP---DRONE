@@ -142,7 +142,8 @@ class Drone :
 
         # shield
         
-        if self.shield :
+        if self.shield and\
+            (self.shield_time > 25 or self.shield_time % 2 == 1) :
             self.shield_image.clip_draw(self.shield_radius * 2 * self.shield_frame_x, self.shield_frame_y,\
                                 self.shield_radius * 2, self.shield_radius * 2,\
                                 self.position_x, self.position_y)
