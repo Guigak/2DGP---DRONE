@@ -155,8 +155,8 @@ class Drone :
     def handle_collision(self, other, group) :
         if group == 'drone:enemy' :
             if not self.shield :
-                print('drone dead')
-                self.alive = False
+                if self.Chk_collision(other) :
+                    self.alive = False
         elif group == 'drone:item' :
             if other.item_num == 2 :
                 self.Shield_on()
@@ -186,3 +186,14 @@ class Drone :
         self.image.clip_draw(self.radius_default * 2 * self.frame_x, self.radius_default * 2 * (3 - self.frame_y),\
                             self.radius_default * 2, self.radius_default * 2,\
                             self.sx, self.sy)
+
+    def Chk_collision(self, other) :
+        tum_x = self.position_x - other.position_x
+        tum_y = self.position_y - other.position_y
+
+        tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
+
+        if tum < self.radius + other.radius - 5 :
+            return True
+        
+        return False
