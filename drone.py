@@ -171,9 +171,15 @@ class Drone :
         self.right = False
 
     def draw_gameover(self) :   # todo
-        sx = server.drone.position_x - 200
-        sy = server.drone.position_y - 150 - self.move_y
+        sx = 350
+        sy = 650
 
-        self.image.clip_draw_to_origin(server.drone.position_x - 200, server.drone.position_y - 150 - self.move_y,\
-                                        400, 300,\
-                                        150, 500)
+        if self.position_x < 150 :
+            sx -= 150 - self.position_x
+
+        if self.position_x > 550 :
+            sx += self.position_x - 550
+        
+        self.image.clip_draw(self.radius_default * 2 * self.frame_x, self.radius_default * 2 * (3 - self.frame_y),\
+                            self.radius_default * 2, self.radius_default * 2,\
+                            sx, sy)
