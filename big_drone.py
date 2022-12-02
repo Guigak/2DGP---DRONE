@@ -12,7 +12,7 @@ class Big_Drone :
         if Big_Drone.image == None :
             Big_Drone.image = load_image('./resource/big_drone.png')
         if Big_Drone.sound == None :
-            Big_Drone.sound = load_music('./resource/drone_sound.wav')
+            Big_Drone.sound = load_wav('./resource/drone_sound.wav')
             Big_Drone.sound.set_volume(32)
 
         self.sound.play()

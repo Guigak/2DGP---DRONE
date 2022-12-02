@@ -10,7 +10,7 @@ class Drone :
         if Drone.image == None :
             Drone.image = load_image('./resource/drone.png')
         if Drone.shield_sound == None :
-            Drone.shield_sound = load_music('./resource/shield_sound.wav')
+            Drone.shield_sound = load_wav('./resource/shield_sound.wav')
             Drone.shield_sound.set_volume(32)
 
         self.radius_default = self.radius = 50

@@ -10,7 +10,7 @@ class Electric_Ball :
         if Electric_Ball.image == None :
             Electric_Ball.image = load_image('./resource/electric_ball.png')
         if Electric_Ball.sound == None :
-            Electric_Ball.sound = load_music('./resource/ball_sound.wav')
+            Electric_Ball.sound = load_wav('./resource/ball_sound.wav')
             Electric_Ball.sound.set_volume(32)
 
         self.sound.play()

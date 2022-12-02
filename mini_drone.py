@@ -10,7 +10,7 @@ class Mini_Drone :
         if Mini_Drone.image == None :
             Mini_Drone.image = load_image('./resource/mini_drone.png')
         if Mini_Drone.sound == None :
-            Mini_Drone.sound = load_music('./resource/drone_sound.wav')
+            Mini_Drone.sound = load_wav('./resource/drone_sound.wav')
             Mini_Drone.sound.set_volume(32)
 
         self.default_x = self.position_x = drone_x

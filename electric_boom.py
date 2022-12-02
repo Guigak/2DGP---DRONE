@@ -10,7 +10,7 @@ class Electric_Boom:
         if Electric_Boom.image == None :
             Electric_Boom.image = load_image('./resource/electric_boom.png')
         if Electric_Boom.sound == None :
-            Electric_Boom.sound = load_music('./resource/boom_sound.wav')
+            Electric_Boom.sound = load_wav('./resource/boom_sound.wav')
             Electric_Boom.sound.set_volume(32)
 
         self.sound.play()
