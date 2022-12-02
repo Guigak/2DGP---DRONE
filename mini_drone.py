@@ -7,7 +7,7 @@ class Mini_Drone :
 
     def __init__(self, drone_x, drone_y,drone_direct):
         if Mini_Drone.image == None :
-            Mini_Drone.image = load_image('mini_drone.png')
+            Mini_Drone.image = load_image('./resource/mini_drone.png')
 
         self.default_x = self.position_x = drone_x
         self.default_y = self.position_y = drone_y

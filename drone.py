@@ -7,7 +7,7 @@ class Drone :
 
     def __init__(self):
         if Drone.image == None :
-            Drone.image = load_image('drone.png')
+            Drone.image = load_image('./resource/drone.png')
 
         self.radius_default = self.radius = 50
         self.position_x = server.WIDTH // 2
@@ -36,7 +36,7 @@ class Drone :
         # shield
         
         if Drone.shield_image == None :
-            Drone.shield_image = load_image('electric_shield.png')
+            Drone.shield_image = load_image('./resource/electric_shield.png')
 
         self.shield_radius = 75
 

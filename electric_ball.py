@@ -7,7 +7,7 @@ class Electric_Ball :
 
     def __init__(self, item_x, item_y, drone_direct):
         if Electric_Ball.image == None :
-            Electric_Ball.image = load_image('electric_ball.png')
+            Electric_Ball.image = load_image('./resource/electric_ball.png')
 
         self.radius = 75
         self.default_x = self.position_x = item_x

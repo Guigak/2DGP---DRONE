@@ -9,7 +9,7 @@ class Big_Drone :
 
     def __init__(self, item_x, item_y):
         if Big_Drone.image == None :
-            Big_Drone.image = load_image('big_drone.png')
+            Big_Drone.image = load_image('./resource/big_drone.png')
 
         self.width = Big_Drone.image.w // 2
         self.height = Big_Drone.image.h

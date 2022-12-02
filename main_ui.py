@@ -10,9 +10,9 @@ class Main_Ui :
 
     def __init__(self):
         if Main_Ui.image == None :
-            Main_Ui.image = load_image('main.png')
+            Main_Ui.image = load_image('./resource/main.png')
         if Main_Ui.font == None :
-            Main_Ui.font = load_font('H2HDRM.TTF', 50)
+            Main_Ui.font = load_font('./resource/H2HDRM.TTF', 50)
 
         self.num_selected = 0   # 0 - start / 1 - exit
 

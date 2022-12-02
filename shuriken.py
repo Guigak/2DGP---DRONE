@@ -10,8 +10,8 @@ class Shuriken :
 
     def __init__(self, item_x, item_y):
         if Shuriken.image_d == None :
-            Shuriken.image_d = load_image('shuriken_drone.png')
-            Shuriken.image_e = load_image('shuriken_explosion.png')
+            Shuriken.image_d = load_image('./resource/shuriken_drone.png')
+            Shuriken.image_e = load_image('./resource/shuriken_explosion.png')
 
         self.radius = 50    # e : 75
         self.position_x = item_x

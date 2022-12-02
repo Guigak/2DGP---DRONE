@@ -11,9 +11,9 @@ class Gameover_Ui :
 
     def __init__(self):
         if Gameover_Ui.image == None :
-            Gameover_Ui.image = load_image('gameover_r.png')
+            Gameover_Ui.image = load_image('./resource/gameover_r.png')
         if Gameover_Ui.font == None :
-            Gameover_Ui.font = load_font('H2HDRM.TTF', 50)
+            Gameover_Ui.font = load_font('./resource/H2HDRM.TTF', 50)
 
         self.num_selected = 0   # 0 - start / 1 - exit
 

@@ -11,9 +11,9 @@ class Pause :
 
     def __init__(self):
         if Pause.image == None :
-            Pause.image = load_image('pause.png')
+            Pause.image = load_image('./resource/pause.png')
         if Pause.font == None :
-            Pause.font = load_font('H2HDRM.TTF', 50)
+            Pause.font = load_font('./resource/H2HDRM.TTF', 50)
 
         self.num_selected = 0   # 0 - start / 1 - exit
 

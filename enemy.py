@@ -9,7 +9,7 @@ class Enemy :
 
     def __init__(self):
         if Enemy.image == None :
-            Enemy.image = load_image('enemy.png')
+            Enemy.image = load_image('./resource/enemy.png')
         #self.radius = 50
         self.default_x = self.position_x = random.randint(0, server.WIDTH)
         self.default_y = self.position_y = server.HEIGHT + self.radius

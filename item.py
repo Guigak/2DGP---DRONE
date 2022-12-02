@@ -14,7 +14,7 @@ class Item:
 
     def __init__(self):
         if Item.image == None :
-            Item.image = load_image('item_icons.png')
+            Item.image = load_image('./resource/item_icons.png')
         self.radius = 25
         self.default_x = self.position_x = random.randint(0, server.WIDTH)
         self.default_y = self.position_y = server.HEIGHT + self.radius

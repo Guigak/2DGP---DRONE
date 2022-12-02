@@ -7,7 +7,7 @@ class Electric_Boom:
 
     def __init__(self, item_x, item_y):
         if Electric_Boom.image == None :
-            Electric_Boom.image = load_image('electric_boom.png')
+            Electric_Boom.image = load_image('./resource/electric_boom.png')
         self.radius = 100
         self.position_x = item_x
         self.position_y = item_y

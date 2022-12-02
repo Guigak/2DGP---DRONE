@@ -6,7 +6,7 @@ class Map :
 
     def __init__(self):
         if Map.image == None :
-            Map.image = load_image('map_r.png')
+            Map.image = load_image('./resource/map_r.png')
         self.speed = 10
         self.move_y = 0
 

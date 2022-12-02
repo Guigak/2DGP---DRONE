@@ -5,7 +5,7 @@ class Score :
 
     def __init__(self):
         if Score.font == None :
-            Score.font = load_font('H2HDRM.TTF', 50)
+            Score.font = load_font('./resource/H2HDRM.TTF', 50)
 
         self.num_score = 0
 
