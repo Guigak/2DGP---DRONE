@@ -48,6 +48,8 @@ class Enemy :
         #
         if not self.alive :
             self.default_x = random.randint(0, server.WIDTH)
+            self.position_x = self.default_x
+            self.position_y = self.default_y
             self.reverse = False
             self.Cal_rad()
             self.time = 0
