@@ -6,10 +6,16 @@ from enemy import Enemy
 
 class Big_Drone :
     image = None
+    sound = None
 
     def __init__(self, item_x, item_y):
         if Big_Drone.image == None :
             Big_Drone.image = load_image('./resource/big_drone.png')
+        if Big_Drone.sound == None :
+            Big_Drone.sound = load_music('./resource/drone_sound.wav')
+            Big_Drone.sound.set_volume(32)
+
+        self.sound.play()
 
         self.width = Big_Drone.image.w // 2
         self.height = Big_Drone.image.h

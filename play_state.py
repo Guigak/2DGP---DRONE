@@ -61,6 +61,10 @@ def Add_Mdrone() :
             game_world.add_object(server.mini_drones[len(server.mini_drones) - 1], 7)
             game_world.add_collision(server.mini_drones[len(server.mini_drones) - 1], 1, 'enemy:mdrone')
 
+            if server.num_create_mdrone > 100 :
+                server.mini_drones[0].play_sound()
+                server.num_create_mdrone -= 100
+
             server.num_create_mdrone -= 1
             server.time_create_mdrone = 4
 

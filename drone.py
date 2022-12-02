@@ -4,10 +4,14 @@ import server
 class Drone :
     image = None
     shield_image = None
+    shield_sound = None
 
     def __init__(self):
         if Drone.image == None :
             Drone.image = load_image('./resource/drone.png')
+        if Drone.shield_sound == None :
+            Drone.shield_sound = load_music('./resource/shield_sound.wav')
+            Drone.shield_sound.set_volume(32)
 
         self.radius_default = self.radius = 50
         self.position_x = server.WIDTH // 2
@@ -163,6 +167,8 @@ class Drone :
 
 
     def Shield_on(self) :
+        self.shield_sound.play()
+
         self.shield = True
         self.radius = self.shield_radius
         self.shield_time = 50

@@ -4,10 +4,17 @@ import server
 
 class Electric_Boom:
     image = None
+    sound = None
 
     def __init__(self, item_x, item_y):
         if Electric_Boom.image == None :
             Electric_Boom.image = load_image('./resource/electric_boom.png')
+        if Electric_Boom.sound == None :
+            Electric_Boom.sound = load_music('./resource/boom_sound.wav')
+            Electric_Boom.sound.set_volume(32)
+
+        self.sound.play()
+
         self.radius = 100
         self.position_x = item_x
         self.position_y = item_y

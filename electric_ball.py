@@ -4,10 +4,16 @@ import server
 
 class Electric_Ball :
     image = None
+    sound = None
 
     def __init__(self, item_x, item_y, drone_direct):
         if Electric_Ball.image == None :
             Electric_Ball.image = load_image('./resource/electric_ball.png')
+        if Electric_Ball.sound == None :
+            Electric_Ball.sound = load_music('./resource/ball_sound.wav')
+            Electric_Ball.sound.set_volume(32)
+
+        self.sound.play()
 
         self.radius = 75
         self.default_x = self.position_x = item_x

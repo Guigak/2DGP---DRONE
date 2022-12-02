@@ -7,11 +7,17 @@ import random
 class Shuriken :
     image_d = None
     image_e = None
+    sound = None
 
     def __init__(self, item_x, item_y):
         if Shuriken.image_d == None :
             Shuriken.image_d = load_image('./resource/shuriken_drone.png')
             Shuriken.image_e = load_image('./resource/shuriken_explosion.png')
+        if Shuriken.sound == None :
+            Shuriken.sound = load_music('./resource/shuriken_sound.wav')
+            Shuriken.sound.set_volume(32)
+
+        self.sound.play()
 
         self.radius = 50    # e : 75
         self.position_x = item_x

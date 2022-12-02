@@ -4,10 +4,14 @@ import server
 
 class Mini_Drone :
     image = None
+    sound = None
 
     def __init__(self, drone_x, drone_y,drone_direct):
         if Mini_Drone.image == None :
             Mini_Drone.image = load_image('./resource/mini_drone.png')
+        if Mini_Drone.sound == None :
+            Mini_Drone.sound = load_music('./resource/drone_sound.wav')
+            Mini_Drone.sound.set_volume(32)
 
         self.default_x = self.position_x = drone_x
         self.default_y = self.position_y = drone_y
@@ -53,6 +57,9 @@ class Mini_Drone :
     def handle_collision(self, other, group) :
         if group == 'enemy:mdrone' :
             other.alive = False
+
+    def play_sound(self) :
+        self.sound.play()
 
     def Chk_with_Enemy(self, enemy) :
         tum_x = enemy.position_x - self.position_x

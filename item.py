@@ -172,7 +172,7 @@ def Add_Bdrone(x, y) :
     pass
 
 def Get_Mdrone() :
-    server.num_create_mdrone += 10
+    server.num_create_mdrone += 110
 
 def Add_Eball(x, y) :
     server.electric_balls += [Electric_Ball(x, y, server.drone.direct)]
