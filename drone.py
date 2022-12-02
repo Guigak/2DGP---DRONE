@@ -199,7 +199,7 @@ class Drone :
 
         tum = math.sqrt(tum_x ** 2 + tum_y ** 2)
 
-        if tum < self.radius + other.radius - 5 :
+        if tum < self.radius + other.radius - 8 :
             return True
         
         return False
