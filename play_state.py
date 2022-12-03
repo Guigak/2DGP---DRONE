@@ -168,6 +168,11 @@ def handle_events():
 # data
 
 def enter() :
+    if server.bgm == None :
+        server.bgm = load_music('./resource/background_sound.mp3')
+    server.bgm.set_volume(32)
+    server.bgm.repeat_play()
+
     server.HEIGHT = get_canvas_height()
     server.WIDTH = get_canvas_width()
 
@@ -214,6 +219,9 @@ def enter() :
 
 # 게임 종료 - 객체를 소멸
 def exit() :
+    server.bgm.stop()
+    server.bgm = None
+
     game_world.clear()
     server.all_clear()
 

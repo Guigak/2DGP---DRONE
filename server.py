@@ -24,6 +24,8 @@ WIDTH = None
 
 map_y = None
 
+bgm = None
+
 
 
 objects = [map, main_ui, drone, enemies, items, electric_booms, big_drones, mini_drones, electric_balls, shurikens, pause, score]
