@@ -115,6 +115,7 @@ def Add_Mdrone() :
 
 def Chk_Game_End() :
     if not server.drone.alive :
+        server.bgm.stop()
         game_framework.push_state(gameover_state)
         pass
     pass

@@ -7,13 +7,19 @@ import server
 
 class Gameover_Ui :
     image = None
+    sound = None
     font = None
 
     def __init__(self):
         if Gameover_Ui.image == None :
             Gameover_Ui.image = load_image('./resource/gameover_r.png')
+        if Gameover_Ui.sound == None :
+            Gameover_Ui.sound = load_wav('./resource/gameover_sound.wav')
         if Gameover_Ui.font == None :
             Gameover_Ui.font = load_font('./resource/H2HDRM.TTF', 50)
+
+        self.sound.set_volume(32)
+        self.sound.play()
 
         self.num_selected = 0   # 0 - start / 1 - exit
 
